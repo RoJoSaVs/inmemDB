@@ -33,11 +33,11 @@ public class Client {
 
 
         Client client = new Client();
-        client.SendMessage("192.168.13.111", 8000, "hola");
+        client.SendMessage("172.18.191.247", 8000, "hola");
         client.listen(serverSocket);
 
         Client client1 = new Client();
-        client1.SendMessage("192.168.13.111", 8000, "adios perra");
+        client1.SendMessage("172.18.191.247", 8000, "adios perra");
         client1.listen(serverSocket);
 
         Client client2 = new Client();

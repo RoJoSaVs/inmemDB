@@ -33,10 +33,10 @@ public class JsonCreator <T>{
      * @return
      * @throws IOException
      */
-    public Administrator unSerializer(String json) throws IOException {
-        Administrator admin  = mapper.readValue(new File("FileJSON.json"), Administrator.class);
-        return admin;
-
-    }
+//    public Administrator unSerializer(String json) throws IOException {
+//        Administrator admin  = mapper.readValue(new File("FileJSON.json"), Administrator.class);
+//        return admin;
+//
+//    }
 
 }
