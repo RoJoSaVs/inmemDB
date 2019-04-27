@@ -7,14 +7,19 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 public class Server {
-    private void run() throws IOException {
+    private void run() throws IOException{
         ServerSocket serverSocket = new ServerSocket(8000);
+        String[] ips = new String[3];
+        ips[0] = "192.168.100.11";
+        //ips[1] = "192.168.100.12";
+        ips[2] = "192.168.100.13";
+        listen(serverSocket);
+        boolean enviar = true;
         while (true) {
             listen(serverSocket);
-            SendMessage("localhost", 8081, "gudbai");
-        }
 
-    }
+        }
+        }
 
     private void listen(ServerSocket server) throws IOException {
         Socket socket;
@@ -38,6 +43,15 @@ public class Server {
     public static void main(String[] args) throws IOException {
         Server server = new Server();
         server.run();
+//        while (true) {
+//            listen(serverSocket);
+//            for (String i: ips){
+//                SendMessage("192.168.100.11", 8081, "https://stackoverflow.com/questions/3403909/get-generic-type-of-class-at-runtime");
+//                //SendMessage("192.168.100.12", 8081, "https://stackoverflow.com/questions/3403909/get-generic-type-of-class-at-runtime");
+//                SendMessage("192.168.100.13", 8081, "https://stackoverflow.com/questions/3403909/get-generic-type-of-class-at-runtime");
+//            }
+//        }
+//    }
 
     }
 }
