@@ -9,9 +9,15 @@ import java.net.Socket;
 public class Server {
     private void run() throws IOException {
         ServerSocket serverSocket = new ServerSocket(8000);
+        String[] ips = new String[3];
+        ips[0] = "192.168.100.12";
+        ips[1] = "192.168.100.11";
+        ips[2] = "192.168.100.13";
         while (true) {
             listen(serverSocket);
-            SendMessage("localhost", 8081, "gudbai");
+            for (String i: ips){
+                SendMessage(i, 8081, "grr");
+            }
         }
 
     }
