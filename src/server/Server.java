@@ -21,7 +21,7 @@ public class Server {
             listen(serverSocket);
 
         }
-        }
+    }
 
     private void listen(ServerSocket server) throws IOException {
         Socket socket;
