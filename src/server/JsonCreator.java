@@ -7,6 +7,7 @@ import org.codehaus.jackson.map.SerializationConfig;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class JsonCreator <T>{
     private ObjectMapper mapper = new ObjectMapper();
@@ -21,22 +22,21 @@ public class JsonCreator <T>{
     public String serializer(T item) throws IOException {
 
         mapper.enable(SerializationConfig.Feature.INDENT_OUTPUT);
-        mapper.writeValue(new File("FileJSON.json"), item);
+        mapper.writeValue(new File("Data.json"), item);
         mapper.setVisibility(JsonMethod.FIELD, JsonAutoDetect.Visibility.ANY);
         String json = mapper.writeValueAsString(item);
         return json;
     }
 
     /**
-     * Convert a json string into a Administrator object
+     * Convert a json string into a ArrayList object
      * @param json
      * @return
      * @throws IOException
      */
-//    public Administrator unSerializer(String json) throws IOException {
-//        Administrator admin  = mapper.readValue(new File("FileJSON.json"), Administrator.class);
-//        return admin;
-//
-//    }
+    public ArrayList unSerializer(String json) throws IOException {
+        ArrayList<T> data = mapper.readValue(new File("Data.json"), ArrayList.class);
+        return data;
+    }
 
 }
