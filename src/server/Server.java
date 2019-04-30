@@ -7,19 +7,23 @@ import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.UnknownHostException;
+import java.util.ArrayList;
 
 public class Server {
+
+    private ArrayList<String> ips = new ArrayList<>();
+    private boolean enviar = true;
+    private static String serverIp = "192.168.100.8";
+
+    public static String getServerIp() {
+        return serverIp;
+    }
+
+
     private void run() throws IOException{
         ServerSocket serverSocket = new ServerSocket(8000);
-        String[] ips = new String[3];
-        ips[0] = "192.168.100.11";
-        //ips[1] = "192.168.100.12";
-        ips[2] = "192.168.100.13";
-        listen(serverSocket);
-        boolean enviar = true;
         while (true) {
             listen(serverSocket);
-
         }
     }
 
@@ -32,6 +36,10 @@ public class Server {
         String message;
         message = incomming.readUTF();
         System.out.println(message);
+
+        if (message.startsWith("192")){
+            ips.add(message);
+        }
         socket.close();
     }
 
@@ -40,12 +48,6 @@ public class Server {
         DataOutputStream outcomming = new DataOutputStream(socket.getOutputStream());
         outcomming.writeUTF(json);
         outcomming.close();
-    }
-
-    private String getIp() throws UnknownHostException {
-        InetAddress inetAddress = InetAddress.getLocalHost();
-        String ip = inetAddress.getHostAddress();
-        return ip;
     }
 
     public static void main(String[] args) throws IOException {

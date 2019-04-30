@@ -7,8 +7,14 @@ import javax.swing.JComboBox;
 import javax.swing.JTable;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import org.codehaus.jackson.map.ObjectMapper;
+import server.Client;
+import server.JsonCreator;
+import server.JsonToSend;
+import server.Server;
 
 
 public class Ventana extends JFrame {
@@ -44,6 +50,18 @@ public class Ventana extends JFrame {
     String espacio = " ";
     private static String vacio[] = {};
 
+    public static String getEsquema_titulo() {
+        return esquema_titulo;
+    }
+
+    public static String[] getParacolumnas() {
+        return paracolumnas;
+    }
+
+    public static String[] getParafilas() {
+        return parafilas;
+    }
+
     private static String[] paracolumnas = null;
     private static String[] parafilas = null;
     private static String[] contenedor = null;
@@ -53,7 +71,6 @@ public class Ventana extends JFrame {
     ArrayList<String> columnas = new ArrayList<String>();
     ArrayList<String> filas = new ArrayList<String>();
     ArrayList<String> tiposva = new ArrayList<String>();
-
 
 
     public void Ventana () {
@@ -299,6 +316,22 @@ public class Ventana extends JFrame {
                 System.out.println(esquema_titulo);
                 Esquema E = new Esquema();
                 E.Esquema2(paracolumnas, parafilas, esquema_titulo);
+
+                try {
+                    JsonCreator jsonCreator = new JsonCreator();
+                    String[][] json = new String[2][];
+
+                    json[0] = paracolumnas;
+                    json[1] = parafilas;
+
+                    String json_to_send = jsonCreator.serializer(json);
+                    System.out.println(json_to_send);
+                    //Main.getClient().SendMessage(Server.getServerIp(), 8000, json_to_send);
+
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+
             }
         });
         add(mostrar_tabla);
