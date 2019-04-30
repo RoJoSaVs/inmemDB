@@ -19,7 +19,10 @@ public class Server {
         return serverIp;
     }
 
-
+    /**
+     * runs the server
+     * @throws IOException
+     */
     private void run() throws IOException{
         ServerSocket serverSocket = new ServerSocket(8000);
         while (true) {
@@ -27,6 +30,11 @@ public class Server {
         }
     }
 
+    /**
+     * let the server to listen for messages
+     * @param server serversocket
+     * @throws IOException
+     */
     private void listen(ServerSocket server) throws IOException {
         Socket socket;
         socket = server.accept();
@@ -43,6 +51,13 @@ public class Server {
         socket.close();
     }
 
+    /**
+     *
+     * @param ip
+     * @param port
+     * @param json
+     * @throws IOException
+     */
     private void SendMessage(String ip, int port, String json) throws IOException {
         Socket socket = new Socket(ip, port);
         DataOutputStream outcomming = new DataOutputStream(socket.getOutputStream());
