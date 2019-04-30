@@ -3,12 +3,9 @@ package GUI;
 
 import javax.swing.*;
 import java.awt.*;
-import javax.swing.JComboBox;
-import javax.swing.JTable;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-
 
 
 public class Ventana extends JFrame {
@@ -18,7 +15,7 @@ public class Ventana extends JFrame {
 
     static JComboBox seleccion_tipo;
 
-    static JButton agregar_esquema, agregar_c, agregar_t, mostrar_tabla,regresar = new JButton();
+    static JButton agregar_esquema, agregar_c, agregar_t, mostrar_tabla, regresar = new JButton();
 
     JLabel fondo, titulo, esquema, columna, combo_tipo, item, llave, valor = new JLabel();
 
@@ -55,6 +52,9 @@ public class Ventana extends JFrame {
     ArrayList<String> tiposva = new ArrayList<String>();
 
 
+    /**
+     *
+     */
 
     public void Ventana () {
 
@@ -190,7 +190,8 @@ public class Ventana extends JFrame {
         });
         add(confirmar);
 
-*/
+
+
         //*****************************************************************************************
         //-----------------------------------------------------------------------------------------
         //****************************************************************************************
@@ -285,7 +286,7 @@ public class Ventana extends JFrame {
         });
         add(agregar_t);
 
-
+*/
         //*****************************************************************************************
         //-----------------------------------------------------------------------------------------
         //*****************************************************************************************
@@ -298,9 +299,7 @@ public class Ventana extends JFrame {
                 System.out.println("PRESIONADO");
                 System.out.println(esquema_titulo);
                 Esquema E = new Esquema();
-
-
-                E.Esquema2(paracolumnas, parafilas, esquema_titulo);
+                E.Esquema2(paracolumnas, parafilas, esquema_titulo,contador);
             }
         });
         add(mostrar_tabla);
