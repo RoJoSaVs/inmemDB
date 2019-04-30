@@ -52,6 +52,9 @@ public class Ventana extends JFrame {
     ArrayList<String> filas = new ArrayList<String>();
     ArrayList<String> tiposva = new ArrayList<String>();
 
+    //VARIABLE QUE CONTIENE EL ESQUEMA
+    public Esquema E;
+
 
     /**
      *
@@ -97,6 +100,8 @@ public class Ventana extends JFrame {
         agregar_esquema.setBounds(190, 50, 100, 20);
         agregar_esquema.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+                E= new Esquema();
+                Contenedor_de_esquemas.lista_de_esquemas.add(E);
                 esquema_titulo = esquema_nombre.getText();
                 System.out.println(esquema_titulo);
             }
@@ -299,13 +304,14 @@ public class Ventana extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 System.out.println("PRESIONADO");
                 System.out.println(esquema_titulo);
-                Esquema E = new Esquema();
+                //Esquema E = new Esquema();  NO SE ESTA MOSTRANDO EL ESQUEMA, SINO QUE SE ESTA CREANDO UNO NUEVO
                 E.Esquema2(paracolumnas, parafilas, esquema_titulo,contador);
                 E.g_paracolumnas=paracolumnas;
                 E.g_parafilas=parafilas;
                 E.g_titulo=esquema_titulo;
                 E.g_conteo=contador;
-                Contenedor_de_esquemas.lista_de_esquemas.add(E);
+                //Contenedor_de_esquemas.lista_de_esquemas.add(E);
+                System.out.println(Contenedor_de_esquemas.lista_de_esquemas.size());
             }
         });
         add(mostrar_tabla);
