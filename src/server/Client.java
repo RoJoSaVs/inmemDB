@@ -10,6 +10,13 @@ import java.net.UnknownHostException;
 
 public class Client {
 
+    /**
+     *
+     * @param ip
+     * @param port
+     * @param json
+     * @throws IOException
+     */
     public void SendMessage(String ip, int port, String json) throws IOException {
         Socket socket = new Socket(ip, port);
         DataOutputStream outcomming = new DataOutputStream(socket.getOutputStream());
@@ -17,6 +24,11 @@ public class Client {
         outcomming.close();
     }
 
+    /**
+     *
+     * @param server serversocket
+     * @throws IOException
+     */
     public void listen(ServerSocket server) throws IOException {
         Socket socket;
         socket = server.accept();
@@ -29,6 +41,11 @@ public class Client {
         socket.close();
     }
 
+    /**
+     *
+     * @return the ip of the client
+     * @throws UnknownHostException
+     */
     public String getIp() throws UnknownHostException {
         InetAddress inetAddress = InetAddress.getLocalHost();
         String ip = inetAddress.getHostAddress();
