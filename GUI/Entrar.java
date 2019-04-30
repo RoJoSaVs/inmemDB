@@ -2,11 +2,8 @@ package GUI;
 
 import javax.swing.*;
 import java.awt.*;
-import javax.swing.JComboBox;
-import javax.swing.JTable;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
 public class Entrar extends JFrame{
 
@@ -60,4 +57,5 @@ public class Entrar extends JFrame{
         getContentPane().setBackground(Color.decode("#060734"));
         setVisible(true);
     }
+
 }
