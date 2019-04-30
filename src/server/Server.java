@@ -47,12 +47,16 @@ public class Server {
 
         if (message.startsWith("192")){
             ips.add(message);
+            System.out.println(ips.toString());
+        } else {
+            JsonCreator jsonCreator = new JsonCreator();
+            String[][] data = jsonCreator.unSerializer(message);
         }
         socket.close();
     }
 
     /**
-     *
+     *sends a message
      * @param ip
      * @param port
      * @param json

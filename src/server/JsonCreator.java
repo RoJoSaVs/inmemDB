@@ -7,7 +7,7 @@ import org.codehaus.jackson.map.SerializationConfig;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
+import java.lang.reflect.Array;
 
 public class JsonCreator <T>{
     private ObjectMapper mapper = new ObjectMapper();
@@ -34,8 +34,8 @@ public class JsonCreator <T>{
      * @return
      * @throws IOException
      */
-    public ArrayList unSerializer(String json) throws IOException {
-        ArrayList<T> data = mapper.readValue(new File("Data.json"), ArrayList.class);
+    public String[][] unSerializer(String json) throws IOException {
+        String[][] data = mapper.readValue(new File("Data.json"), String[][].class);
         return data;
     }
 
