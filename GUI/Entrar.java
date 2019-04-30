@@ -36,6 +36,7 @@ public class Entrar extends JFrame{
             public void actionPerformed(ActionEvent e) {
                 Ventana es = new Ventana();
                 es.Ventana();
+                dispose();
             }});
         add(crear);
 
@@ -59,5 +60,4 @@ public class Entrar extends JFrame{
         getContentPane().setBackground(Color.decode("#060734"));
         setVisible(true);
     }
-
 }

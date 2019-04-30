@@ -8,7 +8,7 @@ import javax.swing.JTable;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import org.codehaus.jackson.map.ObjectMapper;
+
 
 
 public class Ventana extends JFrame {
@@ -18,7 +18,7 @@ public class Ventana extends JFrame {
 
     static JComboBox seleccion_tipo;
 
-    static JButton agregar_esquema, agregar_c, agregar_t, mostrar_tabla = new JButton();
+    static JButton agregar_esquema, agregar_c, agregar_t, mostrar_tabla,regresar = new JButton();
 
     JLabel fondo, titulo, esquema, columna, combo_tipo, item, llave, valor = new JLabel();
 
@@ -304,6 +304,20 @@ public class Ventana extends JFrame {
             }
         });
         add(mostrar_tabla);
+
+        regresar = new JButton("REGRESAR");
+        regresar.setBackground(Color.decode("#1CE92B"));
+        regresar.setBounds(120, 300, 240, 20);
+        regresar.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("PRESIONADO");
+                System.out.println(esquema_titulo);
+                Entrar E = new Entrar();
+                E.Entrar();
+                dispose();
+            }
+        });
+        add(regresar);
 
 
         //*****************************************************************************************

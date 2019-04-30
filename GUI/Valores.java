@@ -1,7 +1,5 @@
 package GUI;
 
-import org.codehaus.jackson.map.ObjectMapper;
-
 class Valores {
 
     public String llavejson;
