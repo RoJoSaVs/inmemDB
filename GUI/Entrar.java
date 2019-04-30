@@ -33,6 +33,7 @@ public class Entrar extends JFrame{
             public void actionPerformed(ActionEvent e) {
                 Ventana es = new Ventana();
                 es.Ventana();
+                System.out.println(Contenedor_de_esquemas.lista_de_esquemas);
                 dispose();
             }});
         add(crear);
@@ -42,9 +43,20 @@ public class Entrar extends JFrame{
         opciones.setBounds(170, 90, 50, 30);
         opciones.setBackground(Color.decode("#3B006A"));
         opciones.setForeground(Color.decode("#B76EF1"));
+        for(Esquema i:Contenedor_de_esquemas.lista_de_esquemas){
+            opciones.addItem(i.g_titulo);
+        }
         opciones.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                String seleccionado= (String) opciones.getSelectedItem();
+                for(Esquema i:Contenedor_de_esquemas.lista_de_esquemas){
+                    if(i.g_titulo.equals(seleccionado)){
+                        i.Esquema2(i.g_paracolumnas,i.g_parafilas,i.g_titulo,i.g_conteo);
+                        break;
+                    }
+                }
+
             }
         });
         add(opciones);

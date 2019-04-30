@@ -6,6 +6,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import GUI.Contenedor_de_esquemas;
 
 
 public class Ventana extends JFrame {
@@ -300,6 +301,11 @@ public class Ventana extends JFrame {
                 System.out.println(esquema_titulo);
                 Esquema E = new Esquema();
                 E.Esquema2(paracolumnas, parafilas, esquema_titulo,contador);
+                E.g_paracolumnas=paracolumnas;
+                E.g_parafilas=parafilas;
+                E.g_titulo=esquema_titulo;
+                E.g_conteo=contador;
+                Contenedor_de_esquemas.lista_de_esquemas.add(E);
             }
         });
         add(mostrar_tabla);

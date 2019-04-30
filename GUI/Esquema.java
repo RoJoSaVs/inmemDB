@@ -14,6 +14,12 @@ public class Esquema extends JFrame {
     ArrayList<String> filas = new ArrayList<String>();
     private static String[] ftotal = null;
 
+    //guarda las entradas del metodo esquema2
+    Object[] g_paracolumnas;
+    String[] g_parafilas;
+    String g_titulo;
+    int g_conteo;
+
 
     // Constructor
     public void Esquema2(Object[] paracolumnas, String[] parafilas, String titulo, int conteo)
@@ -110,7 +116,8 @@ public class Esquema extends JFrame {
         frame.getContentPane().setBackground(Color.decode("#060734"));
         frame.setTitle(titulo);
         frame.setLocationRelativeTo(null);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        //frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
     }
+
 }
