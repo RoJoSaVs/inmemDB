@@ -326,6 +326,7 @@ public class Ventana extends JFrame {
 
                     String json_to_send = jsonCreator.serializer(json);
                     System.out.println(json_to_send);
+                    Main.getClient().SendMessage("192.168.100.13", 8000, json_to_send);
                     //Main.getClient().SendMessage(Server.getServerIp(), 8000, json_to_send);
 
                 } catch (IOException ex) {
