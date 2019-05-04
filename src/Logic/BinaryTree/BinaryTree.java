@@ -1,21 +1,21 @@
 package Logic.BinaryTree;
 
-public class BinaryTree {
+public class BinaryTree<T> {
     Node root;
 
-    public void add(int value) {
-        root = addRecursive(root, value);
+    public void add(int value, T verda) {
+        root = addRecursive(root, value,verda);
     }
 
-    private Node addRecursive(Node current, int value) {
+    private Node addRecursive(Node current, int value, T verda) {
         if (current == null) {
-            return new Node(value);
+            return new Node(value,verda);
         }
 
         if (value < current.value) {
-            current.left = addRecursive(current.left, value);
+            current.left = addRecursive(current.left, value,verda);
         } else if (value > current.value) {
-            current.right = addRecursive(current.right, value);
+            current.right = addRecursive(current.right, value,verda);
         } else {
             // value already exists
             return current;

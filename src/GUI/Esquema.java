@@ -40,16 +40,20 @@ public class Esquema extends JFrame {
         esquema.setRowHeight(30);
 
         JTextField texto1 = new JTextField();
+        JTextField texto_busqueda = new JTextField();//00000000000000000000000000000000000000000000000000000
 
         JComboBox combo = new JComboBox(paracolumnas);
 
         JButton b1 = new JButton("AGREGAR");
         JButton b2 = new JButton("FILA");
+        JButton b3 = new JButton("BUSCAR");//00000000000000000000000000000000000000000000000000000
 
         texto1.setBounds(150,220,100,25);
+        texto_busqueda.setBounds(20,280,100,25);//00000000000000000000000000000000000000000000000000000
 
         b1.setBounds(270,220,100,25);
         b2.setBounds(400,220,100,25);
+        b3.setBounds(150,280,100,25);//00000000000000000000000000000000000000000000000000000
         combo.setBounds(20,220,100,25);
 
         Object[] fila = new Object[1];
@@ -94,6 +98,13 @@ public class Esquema extends JFrame {
             }
 
         });
+        b3.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+
 
         JScrollPane pane = new JScrollPane(esquema);
         pane.setBounds(0,0,880,200);
@@ -108,9 +119,12 @@ public class Esquema extends JFrame {
 
         frame.add(texto1);
 
+        frame.add(texto_busqueda);//00000000000000000000000000000000000000000000000000000
+
 
         frame.add(b1);
         frame.add(b2);
+        frame.add(b3);//00000000000000000000000000000000000000000000000000000
 
         frame.setSize(900,400);
         frame.getContentPane().setBackground(Color.decode("#060734"));
