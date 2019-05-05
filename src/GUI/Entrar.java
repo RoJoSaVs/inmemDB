@@ -1,9 +1,9 @@
 package GUI;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import GUI.Contenedor_de_esquemas;
 
 public class Entrar extends JFrame{
 
@@ -56,13 +56,12 @@ public class Entrar extends JFrame{
                         break;
                     }
                 }
-
             }
         });
         add(opciones);
 
         setLayout(null);
-        setSize(400, 250);
+        setSize(400, 200);
         setResizable(false);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
