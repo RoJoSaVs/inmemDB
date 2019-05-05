@@ -249,6 +249,14 @@ public class Esquema extends JFrame {
                 }
             }
         });
+        b5.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                for(Esquema i:Contenedor_de_esquemas.lista_de_esquemas){
+
+                }
+            }
+        });
 
 
 
