@@ -7,16 +7,12 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.UIManager;
 
-
 public class Ventana extends JFrame {
 
     //COMPONENTES
     static JTextField esquema_nombre, columna_nombre;
-
     static JComboBox seleccion_tipo;
-
     static JButton agregar_esquema, agregar_c, mostrar_tabla, regresar = new JButton();
-
     JLabel fondo, titulo, esquema, columna, combo_tipo = new JLabel();
 
     //VARAIABLES DE CONTROL
@@ -27,19 +23,16 @@ public class Ventana extends JFrame {
     String tipos[] = {"int", "string","float","long","double","join"};
 
     private static String[] paracolumnas = null;
-    private static String[] parafilas = null;
     private static String[] tiposv = null;
 
     ArrayList<String> columnas = new ArrayList<String>();
-    ArrayList<String> filas = new ArrayList<String>();
     ArrayList<String> tiposva = new ArrayList<String>();
+    ArrayList<ArrayList<String>> parafilas = new ArrayList<ArrayList<String>>();
 
     //VARIABLE QUE CONTIENE EL ESQUEMA
     public Esquema E;
 
-
     public void Ventana () {
-
 
         //*****************************************************************************************
         //-----------------------------------------------------------------------------------------
@@ -131,7 +124,6 @@ public class Ventana extends JFrame {
 
                 //Creación de los array para columnas y tipos de varaibles de cada una
                 paracolumnas = columnas.toArray(new String[columnas.size()]);
-                parafilas = filas.toArray(new String[filas.size()]);
                 tiposv = tiposva.toArray(new String[tiposva.size()]);
 
                 //Monitoreo de las variables
@@ -186,11 +178,10 @@ public class Ventana extends JFrame {
                     //Esquema E = new Esquema();  NO SE ESTA MOSTRANDO EL ESQUEMA, SINO QUE SE ESTA CREANDO UNO NUEVO
                     E.Esquema2(paracolumnas, parafilas, esquema_titulo, contador);
                     E.g_paracolumnas = paracolumnas;
-                    E.g_parafilas = parafilas;
+                    E.g_parafilas = E.todasfilas;
                     E.g_titulo = esquema_titulo;
-                    E.tipos = tiposv;
+                    E.tipos = tiposva;
                     E.g_conteo = contador;
-                    //Contenedor_de_esquemas.lista_de_esquemas.add(E);
                     System.out.println(Contenedor_de_esquemas.lista_de_esquemas.size());
                 }
             }

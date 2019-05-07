@@ -1,4 +1,5 @@
 package GUI;
+
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
@@ -11,22 +12,26 @@ public class Esquema extends JFrame {
     String obtener = " ";
     String dato;
     int aumento = -1;
+
+    JLabel eliminar,agregar, modifciar = new JLabel();
+
     ArrayList<String> filas = new ArrayList<String>();
+    ArrayList<ArrayList<String>> todasfilas = new ArrayList<ArrayList<String>>();
+    ArrayList<ArrayList<String>> g_parafilas = new ArrayList<ArrayList<String>>();
+    ArrayList<String> tipos = new ArrayList<String>();
+
     private static String[] ftotal = null;
+    private static String[] ftodas = null;
 
     //Guarda las entradas del método Esquema2
     Object[] g_paracolumnas;
-    String[] g_parafilas;
-    String[] tipos;
     String g_titulo;
     int g_conteo;
     String tipo;
 
-
     // Constructor
-    public void Esquema2(Object[] paracolumnas, String[] parafilas, String titulo, int conteo)
+    public void Esquema2(Object[] paracolumnas,ArrayList<ArrayList<String>> parafilas, String titulo, int conteo)
     {
-
         JFrame frame = new JFrame(titulo);
         JTable esquema = new JTable();
 
@@ -36,30 +41,30 @@ public class Esquema extends JFrame {
 
         esquema.setBackground(Color.decode("#80837F"));
         esquema.setForeground(Color.blue);
-        //esquema.setEnabled(false);
         Font font = new Font("", 1,22);
         esquema.setFont(font);
         esquema.setRowHeight(30);
 
         JTextField texto1 = new JTextField();
-        JTextField texto_busqueda = new JTextField();
+        JTextField texto_busqueda = new JTextField();//////////////////////////////
 
         JComboBox combo = new JComboBox(paracolumnas);
-        JComboBox crear_indice = new JComboBox(paracolumnas);
+        JComboBox crear_indice = new JComboBox(paracolumnas);//////////////////////////
 
         JButton b1 = new JButton("AGREGAR");
         JButton b2 = new JButton("FILA");
-        JButton b3 = new JButton("REGRESAR");
-        JButton b4 = new JButton("BUSCAR");
-        JButton b5 = new JButton("CREAR INDICE");
+        JButton b3 = new JButton("ELIMINAR");
+        JButton b4 = new JButton("MOSTRAR");
+        JButton b5 = new JButton("BUSCAR");//////////////////////
+        JButton b6 = new JButton("CREAR INDICE");//////////////////
 
         texto1.setBounds(150,220,100,25);
         texto1.setBackground(Color.decode("#3B006A"));
         texto1.setForeground(Color.decode("#B76EF1"));
 
-        texto_busqueda.setBounds(20,280,100,25);
-        texto_busqueda.setBackground(Color.decode("#3B006A"));
-        texto_busqueda.setForeground(Color.decode("#B76EF1"));
+        texto_busqueda.setBounds(20,280,100,25);////////////
+        texto_busqueda.setBackground(Color.decode("#3B006A"));////////
+        texto_busqueda.setForeground(Color.decode("#B76EF1"));////////////
 
         b1.setBounds(270,220,100,25);
         b1.setBackground(Color.decode("#3B006A"));
@@ -73,32 +78,38 @@ public class Esquema extends JFrame {
         b3.setBackground(Color.decode("#3B006A"));
         b3.setForeground(Color.decode("#B76EF1"));
 
-        b4.setBounds(150,280,100,25);
+        b4.setBounds(630,220,100,25);
         b4.setBackground(Color.decode("#3B006A"));
         b4.setForeground(Color.decode("#B76EF1"));
 
-        b5.setBounds(400,280,100,25);
-        b5.setBackground(Color.decode("#3B006A"));
+        b5.setBounds(150,280,100,25);/////////////
+        b5.setBackground(Color.decode("#3B006A"));/////////
         b5.setForeground(Color.decode("#B76EF1"));
+
+        b6.setBounds(400,280,100,25);//////////////////
+        b6.setBackground(Color.decode("#3B006A"));///////////////////
+        b6.setForeground(Color.decode("#B76EF1"));
 
         combo.setBounds(20,220,100,25);
         combo.setBackground(Color.decode("#3B006A"));
         combo.setForeground(Color.decode("#B76EF1"));
         combo.setSelectedIndex(-1);
 
-        crear_indice.setBounds(270,280,100,25);
-        crear_indice.setBackground(Color.decode("#3B006A"));
+        crear_indice.setBounds(270,280,100,25);///////////////
+        crear_indice.setBackground(Color.decode("#3B006A"));/////////////////
         crear_indice.setForeground(Color.decode("#B76EF1"));
         crear_indice.setSelectedIndex(-1);
 
         Object[] fila = new Object[1];
+        Object[] filast = new Object[1];
 
         //SECCION DE ACCIONES PARA LOS BOTONES REQUERIDOS
         b1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                tipo = tipos[combo.getSelectedIndex()];
+                //tipo = tipos[combo.getSelectedIndex()];
+                tipo = tipos.get(combo.getSelectedIndex());
                 System.out.println(tipo);
 
                 //VALIDACIÓN DEL TIPO INT
@@ -106,11 +117,11 @@ public class Esquema extends JFrame {
                     try {
                         dato = texto1.getText();
                         Integer.parseInt(dato);
-                        System.out.println("SI SE AGREGA UN INT");
 
                         obtener = texto1.getText();
                         filas.add(obtener);
                         aumento++;
+                        System.out.println(aumento);
                     }
                     catch (Exception E){
                         UIManager.put("OptionPane.messageForeground", Color.decode("#B76EF1"));
@@ -126,11 +137,11 @@ public class Esquema extends JFrame {
                     try {
                         dato = texto1.getText();
                         Float.parseFloat(dato);
-                        System.out.println("SI SE AGREGA UN FLOAT");
 
                         obtener = texto1.getText();
                         filas.add(obtener);
                         aumento++;
+                        System.out.println(aumento);
                     }
                     catch (Exception E){
                         UIManager.put("OptionPane.messageForeground", Color.decode("#B76EF1"));
@@ -146,11 +157,11 @@ public class Esquema extends JFrame {
                     try {
                         dato = texto1.getText();
                         Long.parseLong(dato);
-                        System.out.println("SI SE AGREGA UN LONG");
 
                         obtener = texto1.getText();
                         filas.add(obtener);
                         aumento++;
+                        System.out.println(aumento);
                     }
                     catch (Exception E){
                         UIManager.put("OptionPane.messageForeground", Color.decode("#B76EF1"));
@@ -166,11 +177,11 @@ public class Esquema extends JFrame {
                     try {
                         dato = texto1.getText();
                         Double.parseDouble(dato);
-                        System.out.println("SI SE AGREGA UN DOUBLE");
 
                         obtener = texto1.getText();
                         filas.add(obtener);
                         aumento++;
+                        System.out.println(aumento);
                     }
                     catch (Exception E){
                         UIManager.put("OptionPane.messageForeground", Color.decode("#B76EF1"));
@@ -186,21 +197,20 @@ public class Esquema extends JFrame {
                     try {
                         obtener = texto1.getText();
                         filas.add(obtener);
-                        System.out.println("SI SE AGREGA UN STRING");
                         aumento++;
+                        System.out.println(aumento);
                     }
                     catch (Exception E){
-                        System.out.println("SE ESPERABA UN STRING");
                     }
                 }
             }
-
         });
 
         combo.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.out.println(combo.getSelectedIndex());
+                System.out.println(combo.getSelectedItem());
             }
         });
 
@@ -209,13 +219,12 @@ public class Esquema extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 ftotal = filas.toArray(new String[filas.size()]);
                 //La comparación se hace entre la cantidad de columnas creadas y los datos agregados a columnas
-                if (aumento+1 == conteo) {
+                if (aumento != paracolumnas.length) {
                     for (int i = 0; i > aumento ; i++) {
-                        System.out.println(i);
-                        System.out.println(ftotal[i]);
                         fila[i] = ftotal[i];
                     }
                     modelo.addRow(ftotal);
+                    todasfilas.add(filas);
                 }
                 else {
                     UIManager.put("OptionPane.messageForeground", Color.decode("#B76EF1"));
@@ -224,19 +233,44 @@ public class Esquema extends JFrame {
                     UIManager.put("Panel.background", Color.decode("#060734"));
                     JOptionPane.showMessageDialog(b1, "Faltan agregar datos en columnas");
                 }
+                System.out.println(filas);
             }
-
         });
 
         b3.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-              dispose();
                 System.out.println(esquema.getSelectedRow());
+                int fila = esquema.getSelectedRow();
+                if (fila >=0){
+                    modelo.removeRow(fila);
+                    aumento--;
+                }
+                else{
+                    UIManager.put("OptionPane.messageForeground", Color.decode("#B76EF1"));
+                    UIManager.put("OptionPane.background", Color.decode("#060734"));
+                    UIManager.put("OptionPane.messagebackground", Color.decode("#060734"));
+                    UIManager.put("Panel.background", Color.decode("#060734"));
+                    JOptionPane.showMessageDialog(b1, "Seleccione un fila para eliminar");
+                }
             }
        });
 
         b4.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println(todasfilas);
+                System.out.println(todasfilas.size());
+                int a = 0;
+                for (int i = 0; i < todasfilas.size(); i++){
+                    ftodas =  todasfilas.get(i).toArray(new String[todasfilas.get(i).size()]);
+                    Object[] o = todasfilas.get(i).toArray();
+                    modelo.addRow(o);
+                }
+            }
+        });
+
+        b5.addActionListener(new ActionListener() {/////////////////////////
             @Override
             public void actionPerformed(ActionEvent e) {
                 String por_buscar =texto_busqueda.getText();
@@ -249,24 +283,21 @@ public class Esquema extends JFrame {
                 }
             }
         });
-        b5.addActionListener(new ActionListener() {
+        b6.addActionListener(new ActionListener() {////////////////////////////////
             @Override
             public void actionPerformed(ActionEvent e) {
                 for(Esquema i:Contenedor_de_esquemas.lista_de_esquemas){
-
                 }
             }
         });
-
-
 
         JScrollPane pane = new JScrollPane(esquema);
         pane.setBounds(0,0,880,200);
 
         frame.setLayout(null);
         frame.add(pane);
-        frame.add(combo);
         frame.add(crear_indice);
+        frame.add(combo);
         frame.add(texto1);
         frame.add(texto_busqueda);
         frame.add(b1);
@@ -274,12 +305,13 @@ public class Esquema extends JFrame {
         frame.add(b3);
         frame.add(b4);
         frame.add(b5);
+        frame.add(b6);
+
 
         frame.setSize(900,400);
         frame.getContentPane().setBackground(Color.decode("#060734"));
         frame.setTitle(titulo);
         frame.setLocationRelativeTo(null);
-        //frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
     }
 }

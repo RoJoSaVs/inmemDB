@@ -3,15 +3,13 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import GUI.Contenedor_de_esquemas;
 
 public class Entrar extends JFrame{
 
     JLabel titulo = new JLabel();
-
     JButton crear = new JButton();
-
     JComboBox opciones = new JComboBox();
+
 
     public void Entrar(){
 
@@ -53,6 +51,7 @@ public class Entrar extends JFrame{
                 for(Esquema i:Contenedor_de_esquemas.lista_de_esquemas){
                     if(i.g_titulo.equals(seleccionado)){
                         i.Esquema2(i.g_paracolumnas,i.g_parafilas,i.g_titulo,i.g_conteo);
+                        System.out.println(i.g_parafilas);
                         break;
                     }
                 }
