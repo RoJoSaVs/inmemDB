@@ -45,6 +45,17 @@ public class Server {
         message = incomming.readUTF();
         System.out.println(message);
 
+        checkIp(message);
+
+        socket.close();
+    }
+
+    /**
+     * Checks if the message is an IP so it can be added to the Ip's list
+     * and that's how the Server manages the clients.
+     * @param message
+     */
+    public void checkIp(String message) throws IOException {
         if (message.startsWith("192")){
             ips.add(message);
             System.out.println(ips.toString());
@@ -52,7 +63,6 @@ public class Server {
             JsonCreator jsonCreator = new JsonCreator();
             String[][] data = jsonCreator.unSerializer(message);
         }
-        socket.close();
     }
 
     /**
@@ -72,15 +82,5 @@ public class Server {
     public static void main(String[] args) throws IOException {
         Server server = new Server();
         server.run();
-//        while (true) {
-//            listen(serverSocket);
-//            for (String i: ips){
-//                SendMessage("192.168.100.11", 8081, "https://stackoverflow.com/questions/3403909/get-generic-type-of-class-at-runtime");
-//                //SendMessage("192.168.100.12", 8081, "https://stackoverflow.com/questions/3403909/get-generic-type-of-class-at-runtime");
-//                SendMessage("192.168.100.13", 8081, "https://stackoverflow.com/questions/3403909/get-generic-type-of-class-at-runtime");
-//            }
-//        }
-//    }
-
     }
 }

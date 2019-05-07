@@ -46,6 +46,7 @@ public class Ventana extends JFrame {
     private static String dato5 = "";
 
     //ARREGLOS
+    String[][] json = new String[2][];
     String tipos[] = {"int", "string","float","long","double","join"};
     String espacio = " ";
     private static String vacio[] = {};
@@ -319,15 +320,13 @@ public class Ventana extends JFrame {
 
                 try {
                     JsonCreator jsonCreator = new JsonCreator();
-                    String[][] json = new String[2][];
 
                     json[0] = paracolumnas;
                     json[1] = parafilas;
 
                     String json_to_send = jsonCreator.serializer(json);
                     System.out.println(json_to_send);
-                    Main.getClient().SendMessage("192.168.100.13", 8000, json_to_send);
-                    //Main.getClient().SendMessage(Server.getServerIp(), 8000, json_to_send);
+                    Main.getClient().SendMessage(Server.getServerIp(), 8000, json_to_send);
 
                 } catch (IOException ex) {
                     ex.printStackTrace();

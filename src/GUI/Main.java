@@ -31,8 +31,9 @@ public class Main {
 
 
 
-       client.SendMessage("192.168.100.13", 8000, client.getIp());
+       client.SendMessage(Server.getServerIp(), 8000, client.getIp());
        client.listen(serverSocket);
+
 
     }
 }
