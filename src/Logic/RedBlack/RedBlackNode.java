@@ -10,6 +10,8 @@ class RedBlackNode<T extends Comparable<T>> {
     public static final int RED = 1;
     // the key of each node
     public T key;
+    //el valor
+    public T value;
 
     /** Parent of node */
     RedBlackNode<T> parent;
