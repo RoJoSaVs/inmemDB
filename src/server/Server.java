@@ -14,6 +14,16 @@ public class Server {
     private ArrayList<String> ips = new ArrayList<>();
     private boolean enviar = true;
     private static String serverIp = "192.168.100.8";
+    private static int portClientSend = 8000;
+    private static int getPortClientHear = 8081;
+
+    public static int getPortClientSend() {
+        return portClientSend;
+    }
+
+    public static int getGetPortClientHear() {
+        return getPortClientHear;
+    }
 
     public static String getServerIp() {
         return serverIp;

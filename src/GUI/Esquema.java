@@ -1,10 +1,14 @@
 package GUI;
 
+import server.JsonCreator;
+import server.Server;
+
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class Esquema extends JFrame {
@@ -275,6 +279,21 @@ public class Esquema extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 String por_buscar =texto_busqueda.getText();
                 String tipo_del_dato_por_buscar=Logic.get_data_type.get_type(por_buscar);
+
+
+                try {
+                    String[][] serverList = new String[2][];
+                    serverList[0] = ftotal;
+                    serverList[1] = Ventana.getParacolumnas();
+
+                    JsonCreator jsonCreator = new JsonCreator();
+                    String json = jsonCreator.serializer(serverList);
+
+                    Main.getClient().SendMessage(Server.getServerIp(), Server.getPortClientSend(), json);
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+
                 if( tipo_del_dato_por_buscar.equals("string")){
                     //llama binario de string
                 }

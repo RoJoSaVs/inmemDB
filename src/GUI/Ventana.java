@@ -25,6 +25,10 @@ public class Ventana extends JFrame {
     private static String[] paracolumnas = null;
     private static String[] tiposv = null;
 
+    public static String[] getParacolumnas() {
+        return paracolumnas;
+    }
+
     ArrayList<String> columnas = new ArrayList<String>();
     ArrayList<String> tiposva = new ArrayList<String>();
     ArrayList<ArrayList<String>> parafilas = new ArrayList<ArrayList<String>>();

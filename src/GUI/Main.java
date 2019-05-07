@@ -15,7 +15,7 @@ public class Main {
 
     static {
         try {
-            serverSocket = new ServerSocket(8081);
+            serverSocket = new ServerSocket(Server.getGetPortClientHear());
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -31,7 +31,7 @@ public class Main {
 
 
 
-       client.SendMessage(Server.getServerIp(), 8000, client.getIp());
+       client.SendMessage(Server.getServerIp(), Server.getPortClientSend(), client.getIp());
        client.listen(serverSocket);
 
 
