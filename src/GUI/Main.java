@@ -34,6 +34,8 @@ public class Main {
        client.SendMessage(Server.getServerIp(), Server.getPortClientSend(), client.getIp());
        client.listen(serverSocket);
 
+        System.out.println(Client.getIp());
+
 
     }
 }

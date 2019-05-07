@@ -282,14 +282,11 @@ public class Esquema extends JFrame {
 
 
                 try {
-                    String[][] serverList = new String[2][];
-                    serverList[0] = ftotal;
-                    serverList[1] = Ventana.getParacolumnas();
-
                     JsonCreator jsonCreator = new JsonCreator();
-                    String json = jsonCreator.serializer(serverList);
+                    String json = jsonCreator.serializer(Contenedor_de_esquemas.getLista_de_esquemas());
 
                     Main.getClient().SendMessage(Server.getServerIp(), Server.getPortClientSend(), json);
+
                 } catch (IOException ex) {
                     ex.printStackTrace();
                 }

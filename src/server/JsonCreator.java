@@ -1,5 +1,6 @@
 package server;
 
+import GUI.Esquema;
 import org.codehaus.jackson.annotate.JsonAutoDetect;
 import org.codehaus.jackson.annotate.JsonMethod;
 import org.codehaus.jackson.map.ObjectMapper;
@@ -8,6 +9,7 @@ import org.codehaus.jackson.map.SerializationConfig;
 import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Array;
+import java.util.ArrayList;
 
 public class JsonCreator <T>{
     private ObjectMapper mapper = new ObjectMapper();
@@ -34,8 +36,8 @@ public class JsonCreator <T>{
      * @return
      * @throws IOException
      */
-    public String[][] unSerializer(String json) throws IOException {
-        String[][] data = mapper.readValue(new File("Data.json"), String[][].class);
+    public ArrayList unSerializer(String json) throws IOException {
+        ArrayList<Esquema> data = mapper.readValue(new File("Data.json"), ArrayList.class);
         return data;
     }
 

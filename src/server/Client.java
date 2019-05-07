@@ -46,7 +46,7 @@ public class Client {
      * @return the ip of the client
      * @throws UnknownHostException
      */
-    public String getIp() throws UnknownHostException {
+    public static String getIp() throws UnknownHostException {
         InetAddress inetAddress = InetAddress.getLocalHost();
         String ip = inetAddress.getHostAddress();
         return ip;

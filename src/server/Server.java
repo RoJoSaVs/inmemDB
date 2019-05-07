@@ -1,5 +1,8 @@
 package server;
 
+import GUI.Contenedor_de_esquemas;
+import GUI.Esquema;
+
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -8,12 +11,13 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Server {
 
     private ArrayList<String> ips = new ArrayList<>();
     private boolean enviar = true;
-    private static String serverIp = "192.168.100.8";
+    private static String serverIp = "192.168.100.4";
     private static int portClientSend = 8000;
     private static int getPortClientHear = 8081;
 
@@ -71,7 +75,8 @@ public class Server {
             System.out.println(ips.toString());
         } else {
             JsonCreator jsonCreator = new JsonCreator();
-            String[][] data = jsonCreator.unSerializer(message);
+            ArrayList<Esquema> data = jsonCreator.unSerializer(message);
+            Contenedor_de_esquemas.setLista_de_esquemas(data);
         }
     }
 
