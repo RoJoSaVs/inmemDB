@@ -23,6 +23,7 @@ public class Esquema extends JFrame {
     ArrayList<ArrayList<String>> todasfilas = new ArrayList<ArrayList<String>>();
     ArrayList<ArrayList<String>> g_parafilas = new ArrayList<ArrayList<String>>();
     ArrayList<String> tipos = new ArrayList<String>();
+    String[] estructuras={"AA","AVL","B","Binario","Lista","Rojo-Negro","Splay"};
 
     private static String[] ftotal = null;
     private static String[] ftodas = null;
@@ -54,6 +55,7 @@ public class Esquema extends JFrame {
 
         JComboBox combo = new JComboBox(paracolumnas);
         JComboBox crear_indice = new JComboBox(paracolumnas);//////////////////////////
+        JComboBox escoger_estructuras =new JComboBox(estructuras);
 
         JButton b1 = new JButton("AGREGAR");
         JButton b2 = new JButton("FILA");
@@ -90,9 +92,13 @@ public class Esquema extends JFrame {
         b5.setBackground(Color.decode("#3B006A"));/////////
         b5.setForeground(Color.decode("#B76EF1"));
 
-        b6.setBounds(400,280,100,25);//////////////////
+        b6.setBounds(520,280,100,25);//////////////////
         b6.setBackground(Color.decode("#3B006A"));///////////////////
         b6.setForeground(Color.decode("#B76EF1"));
+
+        escoger_estructuras.setBounds(400,280,100,25);//////////////////
+        escoger_estructuras.setBackground(Color.decode("#3B006A"));///////////////////
+        escoger_estructuras.setForeground(Color.decode("#B76EF1"));
 
         combo.setBounds(20,220,100,25);
         combo.setBackground(Color.decode("#3B006A"));
@@ -300,9 +306,74 @@ public class Esquema extends JFrame {
             }
         });
         b6.addActionListener(new ActionListener() {////////////////////////////////
-            @Override
+            String prueba[]={"das","ds"};//este array no es necesario, solo es lo que se supone que se va a meter en la estructura
+            /*indices del escoger_estructuras:
+            AA=0
+            AVL=1
+            B=2
+            Binario=3
+            Lista=4
+            Rojo-Negro=5
+            Splay=6
+             */
             public void actionPerformed(ActionEvent e) {
-                for(Esquema i:Contenedor_de_esquemas.lista_de_esquemas){
+                int indice=escoger_estructuras.getSelectedIndex();
+                System.out.println(escoger_estructuras.getSelectedIndex());
+                if(indice==0){
+                   if(Logic.get_data_type.get_type(prueba[0])=="string"){
+                       //llamar AA string
+                   }
+                   else{
+                       //llamar AA
+                   }
+                }
+                if(indice==1){
+                    if(Logic.get_data_type.get_type(prueba[0])=="string"){
+                        //llamar AVL string
+                    }
+                    else{
+                        //llamar AVL
+                    }
+                }
+                if(indice==2){
+                    if(Logic.get_data_type.get_type(prueba[0])=="string"){
+                        //llamar B string
+                    }
+                    else{
+                        //llamar B
+                    }
+                }
+                if(indice==3){
+                    if(Logic.get_data_type.get_type(prueba[0])=="string"){
+                        //llamar Binario string
+                    }
+                    else{
+                        //llamar Binario
+                    }
+                }
+                if(indice==4){
+                    if(Logic.get_data_type.get_type(prueba[0])=="string"){
+                        //llamar Lista string
+                    }
+                    else{
+                        //llamar Lista
+                    }
+                }
+                if(indice==5){
+                    if(Logic.get_data_type.get_type(prueba[0])=="string"){
+                        //llamar Rojo-negro string
+                    }
+                    else{
+                        //llamar Rojo-negro
+                    }
+                }
+                if(indice==6){
+                    if(Logic.get_data_type.get_type(prueba[0])=="string"){
+                        //llamar Splay string
+                    }
+                    else{
+                        //llamar Splay
+                    }
                 }
             }
         });
@@ -322,6 +393,7 @@ public class Esquema extends JFrame {
         frame.add(b4);
         frame.add(b5);
         frame.add(b6);
+        frame.add(escoger_estructuras);
 
 
         frame.setSize(900,400);

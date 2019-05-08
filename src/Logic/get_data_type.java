@@ -2,8 +2,8 @@ package Logic;
 
 public class get_data_type {
     public static void main(String[] args){
-        String data="dfs";
-        get_type(data);
+        //String data="dfs";
+        //get_type(data);
     }
 
     public static String get_type(String data){
