@@ -10,7 +10,7 @@ import java.net.InetAddress;
 import java.net.ServerSocket;
 
 public class Main {
-    private static Client client = new Client();
+   private static Client client = new Client();
     private static ServerSocket serverSocket;
 
     static {
@@ -28,13 +28,19 @@ public class Main {
     public static void main(String[] args) throws IOException {
        Entrar E = new Entrar();
        E.Entrar();
+       int f;
+       float g;
+       f=5;
+       g= 5.2f;
+       System.out.println(f>g);
 
 
 
-       client.SendMessage(Server.getServerIp(), Server.getPortClientSend(), client.getIp());
+
+       /*client.SendMessage(Server.getServerIp(), Server.getPortClientSend(), client.getIp());
        client.listen(serverSocket);
 
-        System.out.println(Client.getIp());
+        System.out.println(Client.getIp());*/
 
 
     }

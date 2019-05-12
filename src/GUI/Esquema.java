@@ -340,7 +340,8 @@ public class Esquema extends JFrame {
                         //llamar B string
                     }
                     else{
-                        //llamar B
+                        //llamar B string binario
+
                     }
                 }
                 if(indice==3){
@@ -348,7 +349,12 @@ public class Esquema extends JFrame {
                         //llamar Binario string
                     }
                     else{
-                        //llamar Binario
+                        //llamar binario
+                        if(Logic.get_data_type.get_type(prueba[0])=="int"){
+
+
+                        }
+
                     }
                 }
                 if(indice==4){

@@ -1,15 +1,16 @@
-package src.Logic.AA;
+package Logic.AA;
 
-public class AA {
-    private class nodoArbol {
+public class AA <T extends  Comparable<T>,V> {
+    private class nodoArbol<T extends Comparable<T>,V > {
         private AA hd;
         private AA hi;
-        private int dato;
+        private T key;
+        private V value;
 
         private void nodoArbol(){
             hd = null;
             hi = null;
-            dato = 0;
+            value = null;
         }
     }
 
@@ -23,27 +24,27 @@ public class AA {
         return (raiz == null);
     }
 
-    public void insertar(int a){
+    public void insertar(T key, V value){
         if (esVacio()) {
             nodoArbol nuevo = new nodoArbol();
-            nuevo.dato = a;
+            nuevo.value =value;
             nuevo.hd = new AA();
             nuevo.hi = new AA();
             raiz = nuevo;
         }
         else {
-            if (a > raiz.dato) {
-                (raiz.hd).insertar(a);
+            if (raiz.key.compareTo(key) > 0) {
+                (raiz.hd).insertar(key,value);
             }
-            if (a < raiz.dato){
-                (raiz.hi).insertar(a);
+            if (raiz.key.compareTo(key) < 0){
+                (raiz.hi).insertar(key,value);
             }
         }
     }
 
     public void preOrder(){
         if (!esVacio()) {
-            System.out.print( raiz.dato + ", "  );
+            System.out.print( raiz.value + ", "  );
             raiz.hi.preOrder();
             raiz.hd.preOrder();
         }
@@ -52,7 +53,7 @@ public class AA {
     public void inOrder(){
         if (!esVacio()) {
             raiz.hi.inOrder();
-            System.out.print( raiz.dato + ", "  );
+            System.out.print( raiz.value + ", "  );
             raiz.hd.inOrder();
         }
     }
@@ -61,40 +62,40 @@ public class AA {
         if (!esVacio()) {
             raiz.hd.posOrder();
             raiz.hi.posOrder();
-            System.out.print( raiz.dato + ", "  );
+            System.out.print( raiz.value + ", "  );
 
         }
     }
 
-    public AA buscar(int a){
+    public AA buscar(T key, V value){
         AA arbolito = null;
         if (!esVacio()) {
-            if (a == raiz.dato) {
+            if (key.equals(raiz.key)) {
                 return this;
             }
             else {
-                if (a < raiz.dato) {
-                    arbolito = raiz.hi.buscar(a);
+                if (raiz.key.compareTo(key) < 0) {
+                    arbolito = raiz.hi.buscar(key,value);
                 }
                 else {
-                    arbolito = raiz.hd.buscar(a);
+                    arbolito = raiz.hd.buscar(key,value);
                 }
             }
         }
         return arbolito;
     }
 
-    public boolean existe(int a){
+    public boolean existe(T key, V value){
         if (!esVacio()) {
-            if (a == raiz.dato) {
+            if (key.equals(raiz.key)) {
                 return true;
             }
             else {
-                if (a < raiz.dato) {
-                    raiz.hi.existe(a);
+                if (raiz.key.compareTo(key) < 0) {
+                    raiz.hi.existe(key,value);
                 }
                 else {
-                    raiz.hd.existe(a);
+                    raiz.hd.existe(key,value);
                 }
             }
         }
@@ -119,22 +120,22 @@ public class AA {
         }
     }
 
-    public int buscarMin() {
+    public V buscarMin() {
         AA arbolActual = this;
         while( !arbolActual.raiz.hi.esVacio() ) {
             arbolActual = arbolActual.raiz.hi;
         }
-        int devuelvo= arbolActual.raiz.dato;
+        V devuelvo= (V) arbolActual.raiz.value;//?
         arbolActual.raiz=null;
         return devuelvo;
     }
 
-    public int buscarMan() {
+    public V buscarMan() {
         AA arbolActual = this;
         while( !arbolActual.raiz.hd.esVacio() ) {
             arbolActual = arbolActual.raiz.hd;
         }
-        int devuelvo= arbolActual.raiz.dato;
+        V devuelvo= (V) arbolActual.raiz.value;//?
         arbolActual.raiz=null;
         return devuelvo;
     }
@@ -147,15 +148,15 @@ public class AA {
         return hoja;
     }
 
-    public void eliminar(int a) {
-        AA paraEliminar = buscar(a);
+    public void eliminar(T key, V value) {
+        AA paraEliminar = buscar(key,value);
         if (!paraEliminar.esVacio()) {
             if (paraEliminar.esHoja()) {
                 paraEliminar.raiz = null;
             }
             else {
                 if (!paraEliminar.raiz.hi.esVacio() && !paraEliminar.raiz.hd.esVacio()) {
-                    paraEliminar.raiz.dato = paraEliminar.raiz.hd.buscarMin();
+                    paraEliminar.raiz.value = paraEliminar.raiz.hd.buscarMin();
                 }
                 else {
                     if (paraEliminar.raiz.hi.esVacio()) {
