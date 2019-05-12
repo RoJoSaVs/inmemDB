@@ -129,13 +129,12 @@ public class AA <T extends  Comparable<T>,V> {
         arbolActual.raiz=null;
         return devuelvo;
     }
-
     public V buscarMan() {
         AA arbolActual = this;
         while( !arbolActual.raiz.hd.esVacio() ) {
             arbolActual = arbolActual.raiz.hd;
         }
-        V devuelvo= (V) arbolActual.raiz.value;//?
+        V devuelvo=  (V) arbolActual.raiz.value;//?
         arbolActual.raiz=null;
         return devuelvo;
     }
