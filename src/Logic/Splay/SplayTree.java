@@ -7,7 +7,7 @@ package Logic.Splay;
     // data structure that represents a node in the tree
 
 
-    public class SplayTree {
+    public class SplayTree<T extends  Comparable<T>,V> {
         private Node root;
 
         public SplayTree() {
@@ -26,34 +26,34 @@ package Logic.Splay;
                     indent += "|    ";
                 }
 
-                System.out.println(currPtr.data);
+                System.out.println(currPtr.value);
 
                 printHelper(currPtr.left, indent, false);
                 printHelper(currPtr.right, indent, true);
             }
         }
 
-        private Node searchTreeHelper(Node node, int key) {
-            if (node == null || key == node.data) {
+        private Node searchTreeHelper(Node node, T key, V value) {
+            if (node == null || key == node.key) {
                 return node;
             }
 
-            if (key < node.data) {
-                return searchTreeHelper(node.left, key);
+            if (node.key.compareTo(key) < 0) {
+                return searchTreeHelper(node.left, key,value);
             }
-            return searchTreeHelper(node.right, key);
+            return searchTreeHelper(node.right, key,value);
         }
 
-        private void deleteNodeHelper(Node node, int key) {
+        private void deleteNodeHelper(Node node, T key, V value) {
             Node x = null;
             Node t = null;
             Node s = null;
             while (node != null){
-                if (node.data == key) {
+                if (node.key == key) {
                     x = node;
                 }
 
-                if (node.data <= key) {
+                if (node.key.compareTo(key) >= 0) {
                     node = node.right;
                 } else {
                     node = node.left;
@@ -172,7 +172,7 @@ package Logic.Splay;
 
         private void preOrderHelper(Node node) {
             if (node != null) {
-                System.out.print(node.data + " ");
+                System.out.print(node.key + " ");
                 preOrderHelper(node.left);
                 preOrderHelper(node.right);
             }
@@ -181,7 +181,7 @@ package Logic.Splay;
         private void inOrderHelper(Node node) {
             if (node != null) {
                 inOrderHelper(node.left);
-                System.out.print(node.data + " ");
+                System.out.print(node.key + " ");
                 inOrderHelper(node.right);
             }
         }
@@ -190,7 +190,7 @@ package Logic.Splay;
             if (node != null) {
                 postOrderHelper(node.left);
                 postOrderHelper(node.right);
-                System.out.print(node.data + " ");
+                System.out.print(node.key + " ");
             }
         }
 
@@ -214,8 +214,8 @@ package Logic.Splay;
         }
         // search the tree for the key k
         // and return the corresponding node
-        public Node searchTree(int k) {
-            Node x = searchTreeHelper(root, k);
+        public Node searchTree(T key, V value) {
+            Node x = searchTreeHelper(root, key, value);
             if (x != null) {
                 splay(x);
             }
@@ -276,14 +276,14 @@ package Logic.Splay;
         }
 
         // insert the key to the tree in its appropriate position
-        public void insert(int key) {
-            Node node = new Node(key);
+        public void insert(T key, V value) {
+            Node node = new Node(key,value);
             Node y = null;
             Node x = this.root;
 
             while (x != null) {
                 y = x;
-                if (node.data < x.data) {
+                if (node.key.compareTo(x.key) > 0) {
                     x = x.left;
                 } else {
                     x = x.right;
@@ -293,7 +293,7 @@ package Logic.Splay;
             node.parent = y;
             if (y == null) {
                 root = node;
-            } else if (node.data < y.data) {
+            } else if (node.key.compareTo(y.key) > 0) {
                 y.left = node;
             } else {
                 y.right = node;
@@ -304,8 +304,8 @@ package Logic.Splay;
         }
 
         // delete the node from the tree
-        void deleteNode(int data) {
-            deleteNodeHelper(this.root, data);
+        void deleteNode(T key , V value) {
+            deleteNodeHelper(this.root, key,value);
         }
 
         // print the tree structure on the screen

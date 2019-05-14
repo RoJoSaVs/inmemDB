@@ -48,11 +48,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 // Class Definitions
-public class RedBlackTree<T extends Comparable<T>> {
+public class RedBlackTree<T extends Comparable<T>,V> {
 
     // Root initialized to nil.
-    private RedBlackNode<T> nil = new RedBlackNode<T>();
-    private RedBlackNode<T> root = nil;
+    private RedBlackNode<T,V> nil = new RedBlackNode<T,V>();
+    private RedBlackNode<T,V> root = nil;
 
     public RedBlackTree() {
         root.left = nil;
@@ -62,7 +62,7 @@ public class RedBlackTree<T extends Comparable<T>> {
 
     // @param: x, The node which the lefRotate is to be performed on.
     // Performs a leftRotate around x.
-    private void leftRotate(RedBlackNode<T> x){
+    private void leftRotate(RedBlackNode<T,V> x){
 
         // Call leftRotateFixup() which updates the numLeft
         // and numRight values.
@@ -70,7 +70,7 @@ public class RedBlackTree<T extends Comparable<T>> {
 
         // Perform the left rotate as described in the algorithm
         // in the course text.
-        RedBlackNode<T> y;
+        RedBlackNode<T,V>y;
         y = x.right;
         x.right = y.left;
 
@@ -136,13 +136,13 @@ public class RedBlackTree<T extends Comparable<T>> {
 
     // @param: x, The node which the rightRotate is to be performed on.
     // Updates the numLeft and numRight values affected by the Rotate.
-    private void rightRotate(RedBlackNode<T> y){
+    private void rightRotate(RedBlackNode<T,V> y){
 
         // Call rightRotateFixup to adjust numRight and numLeft values
         rightRotateFixup(y);
 
         // Perform the rotate as described in the course text.
-        RedBlackNode<T> x = y.left;
+        RedBlackNode<T,V>x = y.left;
         y.left = x.right;
 
         // Check for existence of x.right
@@ -207,18 +207,18 @@ public class RedBlackTree<T extends Comparable<T>> {
     }// end rightRotateFixup(RedBlackNode y)
 
 
-    public void insert(T key) {
-        insert(new RedBlackNode<T>(key));
+    public void insert(T key,V value) {
+        insert(new RedBlackNode<T,V>(key,value));
     }
 
     // @param: z, the node to be inserted into the Tree rooted at root
     // Inserts z into the appropriate position in the RedBlackTree while
     // updating numLeft and numRight values.
-    private void insert(RedBlackNode<T> z) {
+    private void insert(RedBlackNode<T,V> z) {
 
         // Create a reference to root & initialize a node to nil
-        RedBlackNode<T> y = nil;
-        RedBlackNode<T> x = root;
+        RedBlackNode<T,V> y = nil;
+        RedBlackNode<T,V> x = root;
 
         // While we haven't reached a the end of the tree keep
         // tryint to figure out where z should go
@@ -268,9 +268,9 @@ public class RedBlackTree<T extends Comparable<T>> {
     // of the RedBlackTree properties
     // Fixes up the violation of the RedBlackTree properties that may have
     // been caused during insert(z)
-    private void insertFixup(RedBlackNode<T> z){
+    private void insertFixup(RedBlackNode<T,V> z){
 
-        RedBlackNode<T> y = nil;
+        RedBlackNode<T,V> y = nil;
         // While there is a violation of the RedBlackTree properties..
         while (z.parent.color == RedBlackNode.RED){
 
@@ -340,7 +340,7 @@ public class RedBlackTree<T extends Comparable<T>> {
 
     // @param: node, a RedBlackNode
     // @param: node, the node with the smallest key rooted at node
-    public RedBlackNode<T> treeMinimum(RedBlackNode<T> node){
+    public RedBlackNode<T,V> treeMinimum(RedBlackNode<T,V> node){
 
         // while there is a smaller key, keep going left
         while (!isNil(node.left))
@@ -353,14 +353,14 @@ public class RedBlackTree<T extends Comparable<T>> {
     // @param: x, a RedBlackNode whose successor we must find
     // @return: return's the node the with the next largest key
     // from x.key
-    public RedBlackNode<T> treeSuccessor(RedBlackNode<T> x){
+    public RedBlackNode<T,V>treeSuccessor(RedBlackNode<T,V> x){
 
         // if x.left is not nil, call treeMinimum(x.right) and
         // return it's value
         if (!isNil(x.left) )
             return treeMinimum(x.right);
 
-        RedBlackNode<T> y = x.parent;
+        RedBlackNode<T,V> y = x.parent;
 
         // while x is it's parent's right child...
         while (!isNil(y) && x == y.right){
@@ -375,13 +375,13 @@ public class RedBlackTree<T extends Comparable<T>> {
 
     // @param: z, the RedBlackNode which is to be removed from the the tree
     // Remove's z from the RedBlackTree rooted at root
-    public void remove(RedBlackNode<T> v){
+    public void remove(RedBlackNode<T,V> v){
 
-        RedBlackNode<T> z = search(v.key);
+        RedBlackNode<T,V> z = search(v.key);
 
         // Declare variables
-        RedBlackNode<T> x = nil;
-        RedBlackNode<T> y = nil;
+        RedBlackNode<T,V> x = nil;
+        RedBlackNode<T,V> y = nil;
 
         // if either one of z's children is nil, then we must remove z
         if (isNil(z.left) || isNil(z.right))
@@ -429,11 +429,11 @@ public class RedBlackTree<T extends Comparable<T>> {
 
     // @param: y, the RedBlackNode which was actually deleted from the tree
     // @param: key, the value of the key that used to be in y
-    private void fixNodeData(RedBlackNode<T> x, RedBlackNode<T> y){
+    private void fixNodeData(RedBlackNode<T,V> x, RedBlackNode<T,V> y){
 
         // Initialize two variables which will help us traverse the tree
-        RedBlackNode<T> current = nil;
-        RedBlackNode<T> track = nil;
+        RedBlackNode<T,V> current = nil;
+        RedBlackNode<T,V> track = nil;
 
 
         // if x is nil, then we will start updating at y.parent
@@ -498,9 +498,9 @@ public class RedBlackTree<T extends Comparable<T>> {
     // @param: x, the child of the deleted node from remove(RedBlackNode v)
     // Restores the Red Black properties that may have been violated during
     // the removal of a node in remove(RedBlackNode v)
-    private void removeFixup(RedBlackNode<T> x){
+    private void removeFixup(RedBlackNode<T,V> x){
 
-        RedBlackNode<T> w;
+        RedBlackNode<T,V> w;
 
         // While we haven't fixed the tree completely...
         while (x != root && x.color == RedBlackNode.BLACK){
@@ -595,10 +595,10 @@ public class RedBlackTree<T extends Comparable<T>> {
     // @return: returns a node with the key, key, if not found, returns null
     // Searches for a node with key k and returns the first such node, if no
     // such node is found returns null
-    public RedBlackNode<T> search(T key){
+    public RedBlackNode<T,V> search(T key){
 
         // Initialize a pointer to the root to traverse the tree
-        RedBlackNode<T> current = root;
+        RedBlackNode<T,V> current = root;
 
         // While we haven't reached the end of the tree
         while (!isNil(current)){
@@ -649,7 +649,7 @@ public class RedBlackTree<T extends Comparable<T>> {
     // @param: node, the root of the tree, the key who we must
     // compare other node key's to.
     // @return: the number of nodes greater than key.
-    public int findNumGreater(RedBlackNode<T> node, T key){
+    public int findNumGreater(RedBlackNode<T,V> node, T key){
 
         // Base Case: if node is nil, return 0
         if (isNil(node))
@@ -680,8 +680,7 @@ public class RedBlackTree<T extends Comparable<T>> {
     }
 
 
-    private void getGreaterThan(RedBlackNode<T> node, T key,
-                                List<T> list) {
+    private void getGreaterThan(RedBlackNode<T,V>node, T key, List<T> list) {
         if (isNil(node)) {
             return;
         } else if (node.key.compareTo(key) > 0) {
@@ -696,7 +695,7 @@ public class RedBlackTree<T extends Comparable<T>> {
     // @param: node, the root of the tree, the key who we must compare other
     // node key's to.
     // @return: the number of nodes smaller than key.
-    public int findNumSmaller(RedBlackNode<T> node, T key){
+    public int findNumSmaller(RedBlackNode<T,V> node, T key){
 
         // Base Case: if node is nil, return 0
         if (isNil(node)) return 0;

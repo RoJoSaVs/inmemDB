@@ -1,18 +1,12 @@
 package Logic.List;
 
-import java.security.PublicKey;
-
-/**
- * Esta clase genera las listas que se usaran
- */
-public class LinkedList<T> {
+public class LinkedList<T extends  Comparable<T>,V> {
     private static LinkedList LinkedList;
     public String Esquema;
     public String name;
     public Node head;
     private Node tail;
     public int length;
-
 
     public Node getHead() {
         return head;
@@ -24,35 +18,19 @@ public class LinkedList<T> {
         this.tail = null;
     }
     /**
-     * Esta clase genera una lista singleton
-     * @return La lista
-     */
-    public static LinkedList singleton_list(){//only one class can be created
-        if (LinkedList == null){
-            LinkedList= new LinkedList();
-        }
-        else{
-            System.out.println("There is already an isinstance of this class");
-        }
-        return LinkedList;
-
-    }
-
-
-    /**
      * Add any kind of value to the list.
      */
-    public void addLast(String value,int count,int points){
+    public void addLast(T key,V value){
         length += 1;
         if (head == null){
-            head = new Node(value, count, points);
-            tail = new Node(value, count, points);
+            head = new Node(key,value);
+            tail = new Node(key,value);
         } else {
             Node tmp = (Node) this.head;
             while (tmp.getNext() != null){
                 tmp = tmp.getNext();
             }
-            tmp.next = new Node(value, count, points);
+            tmp.next = new Node(key,value);
             //tmp.next.prev = tmp;
             tail = tmp.getNext();
 
@@ -76,7 +54,7 @@ public class LinkedList<T> {
         result += " ]";
         return result;
     }
-    public void delete(T value){
+    public void delete(V value){
         Node tmp = head;
         if (this.getHead().getValue()== value){
             this.head = head.next;
@@ -93,8 +71,4 @@ public class LinkedList<T> {
             }
         }
     }
-
-
-
-
 }

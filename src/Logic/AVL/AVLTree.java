@@ -3,7 +3,7 @@ package Logic.AVL;
 //import java.io.*;
 import java.util.*;
 
-public class AVLTree {
+public class AVLTree<T extends  Comparable<T>,V> {
 
     private int height (Node N) {
         if (N == null)
@@ -11,16 +11,16 @@ public class AVLTree {
         return N.height;
     }
 
-    public Node insert(Node node, int value) {
+    public Node insert(Node node, T key, V value) {
         /* 1.  Perform the normal BST rotation */
         if (node == null) {
-            return(new Node(value));
+            return(new Node(key,value));
         }
 
-        if (value < node.value)
-            node.left  = insert(node.left, value);
+        if (node.key.compareTo(key) < 0)
+            node.left  = insert(node.left, key,value);
         else
-            node.right = insert(node.right, value);
+            node.right = insert(node.right,key, value);
 
         /* 2. Update height of this ancestor node */
         node.height = Math.max(height(node.left), height(node.right)) + 1;
@@ -32,22 +32,22 @@ public class AVLTree {
         // If this node becomes unbalanced, then there are 4 cases
 
         // Left Left Case
-        if (balance > 1 && value < node.left.value)
+        if (balance > 1 && node.left.key.compareTo(key) < 0)
             return rightRotate(node);
 
         // Right Right Case
-        if (balance < -1 && value > node.right.value)
+        if (balance < -1 && node.right.key.compareTo(key) > 0)
             return leftRotate(node);
 
         // Left Right Case
-        if (balance > 1 && value > node.left.value)
+        if (balance > 1 &&node.left.key.compareTo(key) > 0)
         {
             node.left =  leftRotate(node.left);
             return rightRotate(node);
         }
 
         // Right Left Case
-        if (balance < -1 && value < node.right.value)
+        if (balance < -1 && node.right.key.compareTo(key) < 0)
         {
             node.right = rightRotate(node.right);
             return leftRotate(node);
@@ -112,7 +112,7 @@ public class AVLTree {
         return current;
     }
 
-    public Node deleteNode(Node root, int value) {
+    public Node deleteNode(Node root, T key, V value) {
         // STEP 1: PERFORM STANDARD BST DELETE
 
         if (root == null)
@@ -120,13 +120,13 @@ public class AVLTree {
 
         // If the value to be deleted is smaller than the root's value,
         // then it lies in left subtree
-        if ( value < root.value )
-            root.left = deleteNode(root.left, value);
+        if ( root.key.compareTo(key) < 0 )
+            root.left = deleteNode(root.left, key,value);
 
             // If the value to be deleted is greater than the root's value,
             // then it lies in right subtree
-        else if( value > root.value )
-            root.right = deleteNode(root.right, value);
+        else if(root.key.compareTo(key) > 0 )
+            root.right = deleteNode(root.right,key, value);
 
             // if value is same as root's value, then This is the node
             // to be deleted
@@ -159,7 +159,7 @@ public class AVLTree {
                 root.value = temp.value;
 
                 // Delete the inorder successor
-                root.right = deleteNode(root.right, temp.value);
+                root.right = deleteNode(root.right,key, (V) temp.value);//?
             }
         }
 

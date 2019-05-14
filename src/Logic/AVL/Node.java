@@ -1,12 +1,14 @@
 package Logic.AVL;
 
-public class Node {
+public class Node<T extends Comparable<T>,V> {
 
     Node left, right, parent;
     int height = 1;
-    int value;
+    public T key;
+    public V value;
 
-    public Node (int val) {
-        this.value = val;
+    public Node(T key, V value) {
+        this.value = value;
+        this.key = key;
     }
 }

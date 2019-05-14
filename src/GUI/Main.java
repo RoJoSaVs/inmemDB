@@ -28,14 +28,6 @@ public class Main {
     public static void main(String[] args) throws IOException {
        Entrar E = new Entrar();
        E.Entrar();
-       int f;
-       float g;
-       f=5;
-       g= 5.2f;
-       System.out.println(f>g);
-
-
-
 
        /*client.SendMessage(Server.getServerIp(), Server.getPortClientSend(), client.getIp());
        client.listen(serverSocket);

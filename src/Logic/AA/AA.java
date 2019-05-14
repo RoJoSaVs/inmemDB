@@ -28,6 +28,7 @@ public class AA <T extends  Comparable<T>,V> {
         if (esVacio()) {
             nodoArbol nuevo = new nodoArbol();
             nuevo.value =value;
+            nuevo.key=key;
             nuevo.hd = new AA();
             nuevo.hi = new AA();
             raiz = nuevo;

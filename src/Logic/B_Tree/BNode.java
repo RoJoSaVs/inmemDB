@@ -2,11 +2,13 @@ package Logic.B_Tree;
 
 // this is implementation of Node class for Balanced tree.
 
-public class BNode
+public class BNode<V>
 {
     static int t;  //variable to determine order of tree
     int count; // number of keys in node
     int key[];  // array of key values
+    int indice;
+    V value;
     BNode child[]; //array of references
     boolean leaf; //is node a leaf or not
     BNode parent;  //parent of current node.
@@ -19,7 +21,7 @@ public class BNode
 // initial value constructor for new node             |
 // will be called from BTree.java                     |
 // ----------------------------------------------------
-    public BNode(int t, BNode parent)
+    public BNode(int t, BNode parent,V value)
     {
         this.t = t;  //assign size
         this.parent = parent; //assign parent

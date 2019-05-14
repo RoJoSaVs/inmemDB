@@ -1,6 +1,6 @@
 package Logic.BinaryTree;
 
-public class BinaryTree<T extends  Comparable<T>,V>{
+public class BinaryTree <T extends  Comparable<T>,V>{
     private Node<T,V> root=null;
 
     public void add(T key, V value) {
@@ -11,7 +11,7 @@ public class BinaryTree<T extends  Comparable<T>,V>{
         if (current == null) {
             return new Node<>(key, value);
         }
-        if (current.key.compareTo(key) < 0) {
+        if (current.key.compareTo(key) < 0) {//(value < current.value)
             current.left = addRecursive(current.left, key, value);
         } else if (current.key.compareTo(key) > 0) {//else if (value > current.value) {
             current.right = addRecursive(current.right, key, value);

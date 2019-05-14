@@ -1,5 +1,11 @@
 package GUI;
 
+import Logic.AA.AA;
+import Logic.AVL.AVLTree;
+import Logic.BinaryTree.BinaryTree;
+import Logic.List.LinkedList;
+import Logic.RedBlack.RedBlackTree;
+import Logic.Splay.SplayTree;
 import server.JsonCreator;
 import server.Server;
 
@@ -10,22 +16,27 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Esquema extends JFrame {
 
     String obtener = " ";
     String dato;
-    int aumento = -1;
+    int aumento = 0;
+    int indice = 0;
 
-    JLabel eliminar,agregar, modifciar = new JLabel();
+    JLabel eliminar,agregar, modificar = new JLabel();
 
     ArrayList<String> filas = new ArrayList<String>();
-    ArrayList<ArrayList<String>> todasfilas = new ArrayList<ArrayList<String>>();
-    ArrayList<ArrayList<String>> g_parafilas = new ArrayList<ArrayList<String>>();
+    ArrayList<ArrayList> lista_de_filas = new ArrayList<ArrayList>();
+    public ArrayList<ArrayList<String>> g_parafilas;
     ArrayList<String> tipos = new ArrayList<String>();
+    ArrayList<String> agregard = new ArrayList<String>();
+    ArrayList<ArrayList<String>> todasfilas = new ArrayList<ArrayList<String>>();
     String[] estructuras={"AA","AVL","B","Binario","Lista","Rojo-Negro","Splay"};
 
     private static String[] ftotal = null;
+    private static String[] fauxiliar = null;
     private static String[] ftodas = null;
 
     //Guarda las entradas del método Esquema2
@@ -99,6 +110,7 @@ public class Esquema extends JFrame {
         escoger_estructuras.setBounds(400,280,100,25);//////////////////
         escoger_estructuras.setBackground(Color.decode("#3B006A"));///////////////////
         escoger_estructuras.setForeground(Color.decode("#B76EF1"));
+        crear_indice.setSelectedIndex(-1);
 
         combo.setBounds(20,220,100,25);
         combo.setBackground(Color.decode("#3B006A"));
@@ -117,10 +129,8 @@ public class Esquema extends JFrame {
         b1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
-                //tipo = tipos[combo.getSelectedIndex()];
+                System.out.println(filas);
                 tipo = tipos.get(combo.getSelectedIndex());
-                System.out.println(tipo);
 
                 //VALIDACIÓN DEL TIPO INT
                 if (tipo == "int"){
@@ -131,7 +141,6 @@ public class Esquema extends JFrame {
                         obtener = texto1.getText();
                         filas.add(obtener);
                         aumento++;
-                        System.out.println(aumento);
                     }
                     catch (Exception E){
                         UIManager.put("OptionPane.messageForeground", Color.decode("#B76EF1"));
@@ -151,7 +160,6 @@ public class Esquema extends JFrame {
                         obtener = texto1.getText();
                         filas.add(obtener);
                         aumento++;
-                        System.out.println(aumento);
                     }
                     catch (Exception E){
                         UIManager.put("OptionPane.messageForeground", Color.decode("#B76EF1"));
@@ -171,7 +179,6 @@ public class Esquema extends JFrame {
                         obtener = texto1.getText();
                         filas.add(obtener);
                         aumento++;
-                        System.out.println(aumento);
                     }
                     catch (Exception E){
                         UIManager.put("OptionPane.messageForeground", Color.decode("#B76EF1"));
@@ -191,7 +198,6 @@ public class Esquema extends JFrame {
                         obtener = texto1.getText();
                         filas.add(obtener);
                         aumento++;
-                        System.out.println(aumento);
                     }
                     catch (Exception E){
                         UIManager.put("OptionPane.messageForeground", Color.decode("#B76EF1"));
@@ -208,7 +214,6 @@ public class Esquema extends JFrame {
                         obtener = texto1.getText();
                         filas.add(obtener);
                         aumento++;
-                        System.out.println(aumento);
                     }
                     catch (Exception E){
                     }
@@ -219,23 +224,27 @@ public class Esquema extends JFrame {
         combo.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println(combo.getSelectedIndex());
-                System.out.println(combo.getSelectedItem());
             }
         });
 
         b2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ftotal = filas.toArray(new String[filas.size()]);
+                //COPIAR TODO LO DE ESTE BOTÓN DESDE AQUÍ
+                filas.add(" ");
+                ftotal = filas.subList(indice*paracolumnas.length+indice,filas.size()-1).toArray
+                        (new String[filas.subList(indice*paracolumnas.length+indice,filas.size()-1).size()]);
+
                 //La comparación se hace entre la cantidad de columnas creadas y los datos agregados a columnas
-                if (aumento != paracolumnas.length) {
+                if (aumento == paracolumnas.length) {
                     for (int i = 0; i > aumento ; i++) {
                         fila[i] = ftotal[i];
                     }
                     modelo.addRow(ftotal);
-                    todasfilas.add(filas);
+                    aumento=0;
+                    indice++;
                 }
+                //HASTA AQUÍ, LO DEMÁS QUEDA IGUAL
                 else {
                     UIManager.put("OptionPane.messageForeground", Color.decode("#B76EF1"));
                     UIManager.put("OptionPane.background", Color.decode("#060734"));
@@ -243,14 +252,25 @@ public class Esquema extends JFrame {
                     UIManager.put("Panel.background", Color.decode("#060734"));
                     JOptionPane.showMessageDialog(b1, "Faltan agregar datos en columnas");
                 }
-                System.out.println(filas);
+            }
+        });
+
+        b4.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //DEBEN AGREGAR TODO LO DE ESTE BOTON YA QUE ES NUEVO
+                for (int ii = 0; ii < filas.size(); ii++){
+                    ftotal = filas.subList(ii*paracolumnas.length+ii,filas.size()-1).toArray
+                            (new String[filas.subList(ii*paracolumnas.length+ii,filas.size()-1).size()]);
+                    Object[] o = ftotal;
+                    modelo.addRow(o);
+                }
             }
         });
 
         b3.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println(esquema.getSelectedRow());
                 int fila = esquema.getSelectedRow();
                 if (fila >=0){
                     modelo.removeRow(fila);
@@ -262,20 +282,6 @@ public class Esquema extends JFrame {
                     UIManager.put("OptionPane.messagebackground", Color.decode("#060734"));
                     UIManager.put("Panel.background", Color.decode("#060734"));
                     JOptionPane.showMessageDialog(b1, "Seleccione un fila para eliminar");
-                }
-            }
-       });
-
-        b4.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                System.out.println(todasfilas);
-                System.out.println(todasfilas.size());
-                int a = 0;
-                for (int i = 0; i < todasfilas.size(); i++){
-                    ftodas =  todasfilas.get(i).toArray(new String[todasfilas.get(i).size()]);
-                    Object[] o = todasfilas.get(i).toArray();
-                    modelo.addRow(o);
                 }
             }
         });
@@ -306,82 +312,88 @@ public class Esquema extends JFrame {
             }
         });
         b6.addActionListener(new ActionListener() {////////////////////////////////
-            String prueba[]={"das","ds"};//este array no es necesario, solo es lo que se supone que se va a meter en la estructura
-            /*indices del escoger_estructuras:
-            AA=0
-            AVL=1
-            B=2
-            Binario=3
-            Lista=4
-            Rojo-Negro=5
-            Splay=6
-             */
+            @Override
             public void actionPerformed(ActionEvent e) {
                 int indice=escoger_estructuras.getSelectedIndex();
-                System.out.println(escoger_estructuras.getSelectedIndex());
-                if(indice==0){
-                   if(Logic.get_data_type.get_type(prueba[0])=="string"){
-                       //llamar AA string
-                   }
-                   else{
-                       //llamar AA
-                   }
-                }
-                if(indice==1){
-                    if(Logic.get_data_type.get_type(prueba[0])=="string"){
-                        //llamar AVL string
-                    }
-                    else{
-                        //llamar AVL
-                    }
-                }
-                if(indice==2){
-                    if(Logic.get_data_type.get_type(prueba[0])=="string"){
-                        //llamar B string
-                    }
-                    else{
-                        //llamar B string binario
-
-                    }
-                }
-                if(indice==3){
-                    if(Logic.get_data_type.get_type(prueba[0])=="string"){
-                        //llamar Binario string
-                    }
-                    else{
-                        //llamar binario
-                        if(Logic.get_data_type.get_type(prueba[0])=="int"){
-
-
+                int cont_para_por_meter_a_arbol=0;
+                int numero_de_columna=crear_indice.getSelectedIndex();
+                ArrayList<String> por_meter_a_arbol=new ArrayList<String>();
+                ArrayList<String> tmp=new ArrayList<String>();
+                if(lista_de_filas.isEmpty()) {
+                    for (String i : filas) {
+                        if (!i.equals(" ")) {
+                            tmp.add(i);
                         }
+                        else {
+                            lista_de_filas.add(tmp);
+                            tmp = new ArrayList<String>();
+                        }
+                    }
+                }
+                for(String i:filas){
+                    if(cont_para_por_meter_a_arbol==numero_de_columna){
+                        por_meter_a_arbol.add(i);
+                    }
+                    if(i.equals(" ")){
+                        cont_para_por_meter_a_arbol=-1;//deberia reiniciar el contador, es -1 para que cuando se le suma 1 se reinicie
+                    }
+                    cont_para_por_meter_a_arbol+=1;
+                }
+                //meter en los arboles
+                if(indice==0){//AA
+                    AA<String,Integer> indice_AA=new AA<>();//el string es el elemento a buscar, el Integer es un indice de la lista lista_de_filas que indica en cual fila esta el elemento
+                    int cont_para_meter_en_arbol=0;
+                    for(String i:por_meter_a_arbol){
+                        indice_AA.insertar(i,cont_para_meter_en_arbol);
+                        cont_para_meter_en_arbol+=1;
+                    }
+                }
+                if(indice==1){//AVL
+                    AVLTree<String,Integer> indice_AVL=new AVLTree<>();//el string es el elemento a buscar, el Integer es un indice de la lista lista_de_filas que indica en cual fila esta el elemento
+                    int cont_para_meter_en_arbol=0;
+                    for(String i:por_meter_a_arbol){
+                        indice_AVL.insert(null,i,cont_para_meter_en_arbol);
+                        cont_para_meter_en_arbol+=1;
+                    }
 
+                }
+                if(indice==2){//B
+                }
+                if(indice==3){//binario
+                    BinaryTree<String,Integer> indice_binario=new BinaryTree<>();//el string es el elemento a buscar, el Integer es un indice de la lista lista_de_filas que indica en cual fila esta el elemento
+                    int cont_para_meter_en_arbol=0;
+                    for(String i:por_meter_a_arbol){
+                        indice_binario.add(i,cont_para_meter_en_arbol);
+                        cont_para_meter_en_arbol+=1;
                     }
                 }
-                if(indice==4){
-                    if(Logic.get_data_type.get_type(prueba[0])=="string"){
-                        //llamar Lista string
-                    }
-                    else{
-                        //llamar Lista
-                    }
-                }
-                if(indice==5){
-                    if(Logic.get_data_type.get_type(prueba[0])=="string"){
-                        //llamar Rojo-negro string
-                    }
-                    else{
-                        //llamar Rojo-negro
+                if(indice==4){//lista
+                    LinkedList<String,Integer> indice_lista=new LinkedList<>();//el string es el elemento a buscar, el Integer es un indice de la lista lista_de_filas que indica en cual fila esta el elemento
+                    int cont_para_meter_en_arbol=0;
+                    for(String i:por_meter_a_arbol){
+                        indice_lista.addLast(i,cont_para_meter_en_arbol);
+                        cont_para_meter_en_arbol+=1;
                     }
                 }
-                if(indice==6){
-                    if(Logic.get_data_type.get_type(prueba[0])=="string"){
-                        //llamar Splay string
+                if(indice==5){//Rojo-negro
+                    RedBlackTree<String,Integer> indice_RedBlack=new RedBlackTree<>();//el string es el elemento a buscar, el Integer es un indice de la lista lista_de_filas que indica en cual fila esta el elemento
+                    int cont_para_meter_en_arbol=0;
+                    for(String i:por_meter_a_arbol) {
+                        indice_RedBlack.insert( i, cont_para_meter_en_arbol);
+                        cont_para_meter_en_arbol += 1;
                     }
-                    else{
-                        //llamar Splay
+                }
+                if(indice==6){//splay
+                    SplayTree<String,Integer> indice_Splay=new SplayTree<>();//el string es el elemento a buscar, el Integer es un indice de la lista lista_de_filas que indica en cual fila esta el elemento
+                    int cont_para_meter_en_arbol=0;
+                    for(String i:por_meter_a_arbol) {
+                        indice_Splay.insert(i, cont_para_meter_en_arbol);
+                        cont_para_meter_en_arbol += 1;
                     }
+
                 }
             }
+
         });
 
         JScrollPane pane = new JScrollPane(esquema);

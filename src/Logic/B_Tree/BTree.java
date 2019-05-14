@@ -12,7 +12,7 @@ package Logic.B_Tree;
 //Jeremy Phelps and Kris                                                |
 //-----------------------------------------------------------------------
 
-public class BTree
+public class BTree<V>
 {
 // here are variables available to tree
     static int order; // order of tree
@@ -20,10 +20,10 @@ public class BTree
 // ---------------------------------------------------------
 // here is the constructor for tree                        |
 // ---------------------------------------------------------
-    public BTree(int order)
+    public BTree(int order,V value)
     {
         this.order = order;
-        root = new BNode(order, null);
+        root = new BNode(order,null,value);
     }
 // --------------------------------------------------------
 // this will be method to search for a given node where   |
@@ -59,9 +59,9 @@ public class BTree
 //  this will be the split method.  It will split node we  |
 //  want to insert into if it is full.                     |
 //  --------------------------------------------------------
-    public void split(BNode x, int i, BNode y)
+    public void split(BNode x, int i, BNode y,V value)
     {
-        BNode z = new BNode(order,null);//gotta have extra node if we are
+        BNode z = new BNode(order,null,value);//gotta have extra node if we are
         //to split.
         z.leaf = y.leaf;//set boolean to same as y
         z.count = order - 1;//this is updated size
@@ -97,7 +97,7 @@ public class BTree
 // ----------------------------------------------------------
 // this will be insert method when node is not full.        |
 // ----------------------------------------------------------
-    public void nonfullInsert(BNode x, int key)
+    public void nonfullInsert(BNode x, int key,V value)
     {
         int i = x.count; //i is number of keys in node x
         if(x.leaf)
@@ -120,38 +120,38 @@ public class BTree
             //	i++;
             if(x.child[j].count == order*2 - 1)
             {
-                split(x,j,x.child[j]);//call split on node x's ith child
+                split(x,j,x.child[j],value);//call split on node x's ith child
                 if(key > x.key[j])
                 {
                     j++;
                 }
             }
-            nonfullInsert(x.child[j],key);//recurse
+            nonfullInsert(x.child[j],key,value);//recurse
         }
     }
 //--------------------------------------------------------------
 //this will be the method to insert in general, it will call    |
 //insert non full if needed.                                    |
 //--------------------------------------------------------------
-    public void insert(BTree t, int key)
+    public void insert(BTree t, int key, V value)
     {
         BNode r = t.root;//this method finds the node to be inserted as
         //it goes through this starting at root node.
         if(r.count == 2*order - 1)//if is full
         {
-            BNode s = new BNode(order,null);//new node
+            BNode s = new BNode(order,null,value);//new node
             t.root = s;    //\
-            // \
+            // \-
             s.leaf = false;//  \
             //   > this is to initialize node.
             s.count = 0;   //  /
             // /
             s.child[0] = r;///
-            split(s,0,r);//split root
-            nonfullInsert(s, key); //call insert method
+            split(s,0,r,value);//split root
+            nonfullInsert(s, key,value); //call insert method
         }
         else
-            nonfullInsert(r,key);//if its not full just insert it
+            nonfullInsert(r,key,value);//if its not full just insert it
     }
 // ---------------------------------------------------------------------------------
 // this will be method to print out a node, or recurses when root node is not leaf |
@@ -177,9 +177,9 @@ public class BTree
 // ------------------------------------------------------------
 // this will be method to print out a node                    |
 // ------------------------------------------------------------
-    public void SearchPrintNode( BTree T,int x)
+    public void SearchPrintNode( BTree T,int x,V value)
     {
-        BNode temp= new BNode(order,null);
+        BNode temp= new BNode(order,null,value);
         temp= search(T.root,x);
         if (temp==null)
         {
@@ -200,9 +200,9 @@ public class BTree
 //simple case of delete that there is and we will not have time|
 //to implement all cases properly.                             |
 //--------------------------------------------------------------
-    public void deleteKey(BTree t, int key)
+    public void deleteKey(BTree t, int key,V value)
     {
-        BNode temp = new BNode(order,null);//temp Bnode
+        BNode temp = new BNode(order,null,value);//temp Bnode
         temp = search(t.root,key);//call of search method on tree for key
         if(temp.leaf && temp.count > order - 1)
         {

@@ -2,7 +2,7 @@ package Logic.RedBlack;
 
 /**
  */ // class RedBlackNode
-class RedBlackNode<T extends Comparable<T>> {
+class RedBlackNode<T extends Comparable<T>,V> {
 
     /** Possible color for this node */
     public static final int BLACK = 0;
@@ -11,14 +11,14 @@ class RedBlackNode<T extends Comparable<T>> {
     // the key of each node
     public T key;
     //el valor
-    public T value;
+    public V value;
 
     /** Parent of node */
-    RedBlackNode<T> parent;
+    RedBlackNode<T,V> parent;
     /** Left child */
-    RedBlackNode<T> left;
+    RedBlackNode<T,V> left;
     /** Right child */
-    RedBlackNode<T> right;
+    RedBlackNode<T,V> right;
     // the number of elements to the left of each node
     public int numLeft = 0;
     // the number of elements to the right of each node
@@ -36,8 +36,9 @@ class RedBlackNode<T extends Comparable<T>> {
     }
 
     // Constructor which sets key to the argument.
-    RedBlackNode(T key){
+    RedBlackNode(T key,V value){
         this();
         this.key = key;
+        this.value=value;
     }
 }// end class RedBlackNode
