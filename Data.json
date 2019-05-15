@@ -1,1 +1,7 @@
-[ [ "h", "h", "h" ], [ "Agregar", "Agregar", "Agregar" ] ]
+{
+  "g_paracolumnas" : [ "Agregar" ],
+  "g_parafilas" : [ ],
+  "g_titulo" : "Ingresar",
+  "tipos" : [ "string" ],
+  "g_conteo" : 5
+}

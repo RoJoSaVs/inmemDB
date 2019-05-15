@@ -1,6 +1,9 @@
 package server;
 
+import GUI.Contenedor_de_esquemas;
 import GUI.Esquema;
+import com.sun.xml.internal.ws.developer.SerializationFeature;
+import com.sun.xml.internal.ws.spi.db.PropertyAccessor;
 import org.codehaus.jackson.annotate.JsonAutoDetect;
 import org.codehaus.jackson.annotate.JsonMethod;
 import org.codehaus.jackson.map.ObjectMapper;
@@ -24,10 +27,26 @@ public class JsonCreator <T>{
     public String serializer(T item) throws IOException {
 
         mapper.enable(SerializationConfig.Feature.INDENT_OUTPUT);
-        mapper.writeValue(new File("Data.json"), item);
+        mapper.disable(SerializationConfig.Feature.FAIL_ON_EMPTY_BEANS);
         mapper.setVisibility(JsonMethod.FIELD, JsonAutoDetect.Visibility.ANY);
+        mapper.writeValue(new File("Data.json"), item);
         String json = mapper.writeValueAsString(item);
         return json;
+    }
+
+    public ArrayList<JsonToSend> separadorDeEsquemas(ArrayList<Esquema> esquemas){
+        ArrayList<JsonToSend> esquemasSeparados = new ArrayList<>();
+        for (Esquema i: esquemas){
+            JsonToSend jsonToSend = new JsonToSend();
+            jsonToSend.setG_conteo(i.g_conteo);
+            jsonToSend.setG_paracolumnas(i.g_paracolumnas);
+            jsonToSend.setG_parafilas(i.g_parafilas);
+            jsonToSend.setG_titulo(i.g_titulo);
+            jsonToSend.setTipos(i.tipos);
+            esquemasSeparados.add(jsonToSend);
+
+        }
+        return esquemasSeparados;
     }
 
     /**
@@ -36,8 +55,8 @@ public class JsonCreator <T>{
      * @return
      * @throws IOException
      */
-    public ArrayList unSerializer(String json) throws IOException {
-        ArrayList<Esquema> data = mapper.readValue(new File("Data.json"), ArrayList.class);
+    public JsonToSend unSerializer(String json) throws IOException {
+        JsonToSend data = mapper.readValue(new File("Data.json"), JsonToSend.class);
         return data;
     }
 

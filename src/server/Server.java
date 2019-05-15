@@ -2,6 +2,7 @@ package server;
 
 import GUI.Contenedor_de_esquemas;
 import GUI.Esquema;
+import GUI.Main;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -17,7 +18,7 @@ public class Server {
 
     private ArrayList<String> ips = new ArrayList<>();
     private boolean enviar = true;
-    private static String serverIp = "192.168.100.4";
+    private static String serverIp = "localhost";
     private static int portClientSend = 8000;
     private static int getPortClientHear = 8081;
 
@@ -70,13 +71,27 @@ public class Server {
      * @param message
      */
     public void checkIp(String message) throws IOException {
-        if (message.startsWith("192")){
+        if (message.startsWith("192") || message.startsWith("127")){
             ips.add(message);
             System.out.println(ips.toString());
         } else {
-            JsonCreator jsonCreator = new JsonCreator();
-            ArrayList<Esquema> data = jsonCreator.unSerializer(message);
-            Contenedor_de_esquemas.setLista_de_esquemas(data);
+            for (String i: ips){
+                this.SendMessage(i, getGetPortClientHear(), message);
+                JsonCreator jsonCreator = new JsonCreator();
+                ArrayList<Esquema> nueva_memoria = new ArrayList<>();
+                JsonToSend data = jsonCreator.unSerializer(message);
+                Esquema nuevoEsquema = new Esquema();
+
+                nuevoEsquema.g_parafilas = data.getG_parafilas();
+                nuevoEsquema.g_paracolumnas = data.getG_paracolumnas();
+                nuevoEsquema.g_conteo = data.getG_conteo();
+                nuevoEsquema.g_titulo = data.getG_titulo();
+                nuevoEsquema.tipos = data.getTipos();
+                nueva_memoria.add(nuevoEsquema);
+                Contenedor_de_esquemas.setLista_de_esquemas(nueva_memoria);
+
+            }
+
         }
     }
 

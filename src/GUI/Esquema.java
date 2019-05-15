@@ -7,6 +7,7 @@ import Logic.List.LinkedList;
 import Logic.RedBlack.RedBlackTree;
 import Logic.Splay.SplayTree;
 import server.JsonCreator;
+import server.JsonToSend;
 import server.Server;
 
 import javax.swing.*;
@@ -20,30 +21,30 @@ import java.util.Collections;
 
 public class Esquema extends JFrame {
 
-    String obtener = " ";
-    String dato;
-    int aumento = 0;
-    int indice = 0;
+    public String obtener = " ";
+    public String dato;
+    public int aumento = 0;
+    public int indice = 0;
 
-    JLabel eliminar,agregar, modificar = new JLabel();
+    public JLabel eliminar,agregar, modificar = new JLabel();
 
-    ArrayList<String> filas = new ArrayList<String>();
-    ArrayList<ArrayList> lista_de_filas = new ArrayList<ArrayList>();
+    public ArrayList<String> filas = new ArrayList<String>();
+    public ArrayList<ArrayList> lista_de_filas = new ArrayList<ArrayList>();
     public ArrayList<ArrayList<String>> g_parafilas;
-    ArrayList<String> tipos = new ArrayList<String>();
-    ArrayList<String> agregard = new ArrayList<String>();
-    ArrayList<ArrayList<String>> todasfilas = new ArrayList<ArrayList<String>>();
-    String[] estructuras={"AA","AVL","B","Binario","Lista","Rojo-Negro","Splay"};
+    public ArrayList<String> tipos = new ArrayList<String>();
+    public ArrayList<String> agregard = new ArrayList<String>();
+    public ArrayList<ArrayList<String>> todasfilas = new ArrayList<ArrayList<String>>();
+    public String[] estructuras={"AA","AVL","B","Binario","Lista","Rojo-Negro","Splay"};
 
     private static String[] ftotal = null;
     private static String[] fauxiliar = null;
     private static String[] ftodas = null;
 
     //Guarda las entradas del método Esquema2
-    Object[] g_paracolumnas;
-    String g_titulo;
-    int g_conteo;
-    String tipo;
+    public Object[] g_paracolumnas;
+    public String g_titulo;
+    public int g_conteo;
+    public String tipo;
 
     // Constructor
     public void Esquema2(Object[] paracolumnas,ArrayList<ArrayList<String>> parafilas, String titulo, int conteo)
@@ -295,9 +296,12 @@ public class Esquema extends JFrame {
 
                 try {
                     JsonCreator jsonCreator = new JsonCreator();
-                    String json = jsonCreator.serializer(Contenedor_de_esquemas.getLista_de_esquemas());
-
-                    Main.getClient().SendMessage(Server.getServerIp(), Server.getPortClientSend(), json);
+                    ArrayList<JsonToSend> listaDeEsquemas = jsonCreator.separadorDeEsquemas(Contenedor_de_esquemas.getLista_de_esquemas());
+                    for (JsonToSend i: listaDeEsquemas){
+                        String json = jsonCreator.serializer(i);
+                        Main.getClient().SendMessage(Server.getServerIp(), Server.getPortClientSend(), json);
+                        System.out.println(json);
+                    }
 
                 } catch (IOException ex) {
                     ex.printStackTrace();
