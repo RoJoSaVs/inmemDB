@@ -1,6 +1,6 @@
 package Logic.Splay;
 
-class Node<T extends Comparable<T>,V> {
+public class Node<T extends Comparable<T>,V> {
     public T key;
     public V value;
     Node parent; // pointer to the parent

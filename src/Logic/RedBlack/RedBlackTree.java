@@ -595,6 +595,11 @@ public class RedBlackTree<T extends Comparable<T>,V> {
     // @return: returns a node with the key, key, if not found, returns null
     // Searches for a node with key k and returns the first such node, if no
     // such node is found returns null
+
+    public V buscar(T key){// no se porque tuve que crear un metodo para esto
+        V res= (V)search(key).value;
+        return res;
+    }
     public RedBlackNode<T,V> search(T key){
 
         // Initialize a pointer to the root to traverse the tree

@@ -1,7 +1,7 @@
 {
-  "g_paracolumnas" : [ "Agregar" ],
+  "g_paracolumnas" : [ "fdss", "fdss" ],
   "g_parafilas" : [ ],
-  "g_titulo" : "Ingresar",
-  "tipos" : [ "string" ],
-  "g_conteo" : 5
+  "g_titulo" : "adsf",
+  "tipos" : [ "string", "string" ],
+  "g_conteo" : 2
 }

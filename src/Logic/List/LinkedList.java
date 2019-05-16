@@ -40,6 +40,18 @@ public class LinkedList<T extends  Comparable<T>,V> {
     /**
      * @return Visual String of the list.
      */
+    public V find(T key){
+        int i=0;
+        V res = null;
+        Node node=this.head;
+        while(node!=null){
+            if(node.key.equals(key)){
+                res= (V) node.value;
+            }
+            node=node.next;
+        }
+        return res;
+    }
     public String printL(){
         Node tmp = head;
         String result = "[ ";

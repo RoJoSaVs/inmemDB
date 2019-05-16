@@ -86,21 +86,23 @@ public class AA <T extends  Comparable<T>,V> {
         return arbolito;
     }
 
-    public boolean existe(T key, V value){
+    public V existe(T key,AA_container contenedor_del_valor){
         if (!esVacio()) {
             if (key.equals(raiz.key)) {
-                return true;
+                System.out.println("paso por aqui");
+                contenedor_del_valor.setValue_del_nodo(raiz.value);
+                return (V) raiz.value;
             }
             else {
                 if (raiz.key.compareTo(key) < 0) {
-                    raiz.hi.existe(key,value);
+                    raiz.hi.existe(key,contenedor_del_valor);
                 }
                 else {
-                    raiz.hd.existe(key,value);
+                    raiz.hd.existe(key,contenedor_del_valor);
                 }
             }
         }
-        return false;
+        return null;
     }
 
     public int cantidad(){

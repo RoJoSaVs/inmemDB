@@ -19,18 +19,20 @@ public class BinaryTree <T extends  Comparable<T>,V>{
         return current;
     }
 
-    public boolean containsNode(T key, V value) {
+    public Node containsNode(T key, V value) {
         return containsNodeRecursive(root,key, value);
     }
 
-    private boolean containsNodeRecursive(Node<T,V> current, T key,V value) {
+    private Node containsNodeRecursive(Node<T,V> current, T key,V value) {
         if (current == null) {
             System.out.println(false);
-            return false;
+            return null;
         }
-        if (value == current.value) {
+        System.out.println(key);
+        System.out.println(current.key);
+        if (key.equals(current.key)) {
             System.out.println(true);
-            return true;
+            return current;
         }
         return current.key.compareTo(key) < 0
                 ? containsNodeRecursive(current.left,key,value)

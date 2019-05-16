@@ -34,12 +34,12 @@ package Logic.Splay;
         }
 
         private Node searchTreeHelper(Node node, T key, V value) {
-            if (node == null || key == node.key) {
+            if (node == null || key.equals(node.key)) {
                 return node;
             }
 
             if (node.key.compareTo(key) < 0) {
-                return searchTreeHelper(node.left, key,value);
+                return searchTreeHelper(node.left,key,value);
             }
             return searchTreeHelper(node.right, key,value);
         }
@@ -214,6 +214,7 @@ package Logic.Splay;
         }
         // search the tree for the key k
         // and return the corresponding node
+
         public Node searchTree(T key, V value) {
             Node x = searchTreeHelper(root, key, value);
             if (x != null) {

@@ -1,7 +1,9 @@
 package GUI;
 
 import Logic.AA.AA;
+import Logic.AA.AA_container;
 import Logic.AVL.AVLTree;
+import Logic.B_Tree.B_tree;
 import Logic.BinaryTree.BinaryTree;
 import Logic.List.LinkedList;
 import Logic.RedBlack.RedBlackTree;
@@ -35,6 +37,7 @@ public class Esquema extends JFrame {
     public ArrayList<String> agregard = new ArrayList<String>();
     public ArrayList<ArrayList<String>> todasfilas = new ArrayList<ArrayList<String>>();
     public String[] estructuras={"AA","AVL","B","Binario","Lista","Rojo-Negro","Splay"};
+    public ArrayList<Object[]> Lista_de_columnas = null;
 
     private static String[] ftotal = null;
     private static String[] fauxiliar = null;
@@ -75,6 +78,7 @@ public class Esquema extends JFrame {
         JButton b4 = new JButton("MOSTRAR");
         JButton b5 = new JButton("BUSCAR");//////////////////////
         JButton b6 = new JButton("CREAR INDICE");//////////////////
+        JButton b7 = new JButton("BORRAR");//////////////////
 
         texto1.setBounds(150,220,100,25);
         texto1.setBackground(Color.decode("#3B006A"));
@@ -104,11 +108,15 @@ public class Esquema extends JFrame {
         b5.setBackground(Color.decode("#3B006A"));/////////
         b5.setForeground(Color.decode("#B76EF1"));
 
-        b6.setBounds(520,280,100,25);//////////////////
+        b6.setBounds(630,280,100,25);//////////////////
         b6.setBackground(Color.decode("#3B006A"));///////////////////
         b6.setForeground(Color.decode("#B76EF1"));
 
-        escoger_estructuras.setBounds(400,280,100,25);//////////////////
+        b7.setBounds(270,280,100,25);//////////////////
+        b7.setBackground(Color.decode("#3B006A"));///////////////////
+        b7.setForeground(Color.decode("#B76EF1"));
+
+        escoger_estructuras.setBounds(520,280,100,25);;//(400,280,100,25);//////////////////
         escoger_estructuras.setBackground(Color.decode("#3B006A"));///////////////////
         escoger_estructuras.setForeground(Color.decode("#B76EF1"));
         crear_indice.setSelectedIndex(-1);
@@ -118,7 +126,7 @@ public class Esquema extends JFrame {
         combo.setForeground(Color.decode("#B76EF1"));
         combo.setSelectedIndex(-1);
 
-        crear_indice.setBounds(270,280,100,25);///////////////
+        crear_indice.setBounds(400,280,100,25);///////////////
         crear_indice.setBackground(Color.decode("#3B006A"));/////////////////
         crear_indice.setForeground(Color.decode("#B76EF1"));
         crear_indice.setSelectedIndex(-1);
@@ -290,10 +298,6 @@ public class Esquema extends JFrame {
         b5.addActionListener(new ActionListener() {/////////////////////////
             @Override
             public void actionPerformed(ActionEvent e) {
-                String por_buscar =texto_busqueda.getText();
-                String tipo_del_dato_por_buscar=Logic.get_data_type.get_type(por_buscar);
-
-
                 try {
                     JsonCreator jsonCreator = new JsonCreator();
                     ArrayList<JsonToSend> listaDeEsquemas = jsonCreator.separadorDeEsquemas(Contenedor_de_esquemas.getLista_de_esquemas());
@@ -306,18 +310,105 @@ public class Esquema extends JFrame {
                 } catch (IOException ex) {
                     ex.printStackTrace();
                 }
+                String por_buscar =texto_busqueda.getText();
+                int numero_de_columna=crear_indice.getSelectedIndex();
+                Object[] busqueda_sobre_esta_columna=Lista_de_columnas.get(numero_de_columna);
+                boolean habia_algo=false;
+                for(Object i: busqueda_sobre_esta_columna){
+                    if(i!=null){
+                        habia_algo=true;
+                        if (i instanceof AA){
+                            AA_container contenedor_del_valor=new AA_container();
 
-                if( tipo_del_dato_por_buscar.equals("string")){
-                    //llama binario de string
+                            ((AA) i).existe(por_buscar,contenedor_del_valor);
+                            if(contenedor_del_valor.value_del_nodo!=null){
+                                JOptionPane.showMessageDialog(null,(lista_de_filas.get((Integer) contenedor_del_valor.value_del_nodo)).toString());
+                                System.out.println(lista_de_filas.get((Integer) contenedor_del_valor.value_del_nodo));
+                            }
+                            else{
+                                JOptionPane.showMessageDialog(null,"no se encontró ");
+                            }
+
+                        }
+                        if (i instanceof AVLTree){
+                            Integer resultado = (Integer) ((AVLTree) i).search(por_buscar);
+                            if(resultado!=null) {
+                                JOptionPane.showMessageDialog(null, lista_de_filas.get(resultado).toString());
+                                System.out.println(lista_de_filas.get(resultado));
+                            }
+                            else{
+                                JOptionPane.showMessageDialog(null,"no se encontró ");
+                            }
+
+                        }
+                        if (i instanceof B_tree){
+                            Integer resultado = (Integer) ((B_tree) i).get(por_buscar);
+                            if(resultado!=null) {
+                                JOptionPane.showMessageDialog(null, lista_de_filas.get(resultado).toString());
+                                System.out.println(lista_de_filas.get(resultado));
+                            }
+                            else{
+                                JOptionPane.showMessageDialog(null,"no se encontró ");
+                            }
+                        }
+                        if (i instanceof BinaryTree){
+                            Integer resultado = (Integer) ((BinaryTree) i).containsNode(por_buscar, 0).value;
+                            if(resultado!=null) {
+                                JOptionPane.showMessageDialog(null, lista_de_filas.get(resultado).toString());
+                                System.out.println(lista_de_filas.get(resultado));
+                            }
+                            else{
+                                JOptionPane.showMessageDialog(null,"no se encontró ");
+                            }
+                        }
+                        if (i instanceof LinkedList){
+                            Integer resultado = (Integer) ((LinkedList) i).find(por_buscar);
+                            if(resultado!=null) {
+                                JOptionPane.showMessageDialog(null, lista_de_filas.get(resultado).toString());
+                                System.out.println(lista_de_filas.get(resultado));
+                            }
+                            else{
+                                JOptionPane.showMessageDialog(null,"no se encontró ");
+                            }
+                        }
+                        if (i instanceof RedBlackTree){
+                            Integer resultado = (Integer) ((RedBlackTree) i).buscar(por_buscar);
+                            if(resultado!=null) {
+                                JOptionPane.showMessageDialog(null, lista_de_filas.get(resultado).toString());
+                                System.out.println(lista_de_filas.get(resultado));
+                            }
+                            else{
+                                JOptionPane.showMessageDialog(null,"no se encontró ");
+                            }
+                        }
+                        if (i instanceof SplayTree){
+                            Integer resultado = (Integer) ((SplayTree) i).searchTree(por_buscar,0).value;
+                            if(resultado!=null) {
+                                JOptionPane.showMessageDialog(null, lista_de_filas.get(resultado).toString());
+                                System.out.println(lista_de_filas.get(resultado));
+                            }
+                            else{
+                                JOptionPane.showMessageDialog(null,"no se encontró");
+                            }
+                        }
+
+                    }
                 }
-                else{
-                    //llama binario normal
+                if(habia_algo==false){
+                    JOptionPane.showMessageDialog(null,"No se encontró ninguna estructura en esta columna");
                 }
             }
         });
         b6.addActionListener(new ActionListener() {////////////////////////////////
             @Override
             public void actionPerformed(ActionEvent e) {
+                if (Lista_de_columnas==null){
+                    for(Object i:paracolumnas){
+                        Lista_de_columnas=new ArrayList<Object[]>();
+                        Object[] lista_de_estructuras_sobre_una_columna={null,null,null,null,null,null,null};
+                        Lista_de_columnas.add(lista_de_estructuras_sobre_una_columna);
+                    }
+                }
                 int indice=escoger_estructuras.getSelectedIndex();
                 int cont_para_por_meter_a_arbol=0;
                 int numero_de_columna=crear_indice.getSelectedIndex();
@@ -345,60 +436,83 @@ public class Esquema extends JFrame {
                 }
                 //meter en los arboles
                 if(indice==0){//AA
-                    AA<String,Integer> indice_AA=new AA<>();//el string es el elemento a buscar, el Integer es un indice de la lista lista_de_filas que indica en cual fila esta el elemento
+                    AA<String, Integer> indice_AA = new AA<>();//el string es el elemento a buscar, el Integer es un indice de la lista lista_de_filas que indica en cual fila esta el elemento
                     int cont_para_meter_en_arbol=0;
                     for(String i:por_meter_a_arbol){
                         indice_AA.insertar(i,cont_para_meter_en_arbol);
                         cont_para_meter_en_arbol+=1;
                     }
+                    Lista_de_columnas.get(numero_de_columna)[0]=indice_AA;
                 }
                 if(indice==1){//AVL
-                    AVLTree<String,Integer> indice_AVL=new AVLTree<>();//el string es el elemento a buscar, el Integer es un indice de la lista lista_de_filas que indica en cual fila esta el elemento
+                    AVLTree<String, Integer> indice_AVL = new AVLTree<>();//el string es el elemento a buscar, el Integer es un indice de la lista lista_de_filas que indica en cual fila esta el elemento
                     int cont_para_meter_en_arbol=0;
                     for(String i:por_meter_a_arbol){
-                        indice_AVL.insert(null,i,cont_para_meter_en_arbol);
+                        indice_AVL.insert(i,cont_para_meter_en_arbol);
                         cont_para_meter_en_arbol+=1;
                     }
-
+                    Lista_de_columnas.get(numero_de_columna)[indice]=indice_AVL;
                 }
-                if(indice==2){//B
+                if(indice==2) {//B
+                    B_tree<String, Integer> indice_B = new B_tree<>();//el string es el elemento a buscar, el Integer es un indice de la lista lista_de_filas que indica en cual fila esta el elemento
+                    int cont_para_meter_en_arbol=0;
+                    for(String i:por_meter_a_arbol){
+                        indice_B.put(i,cont_para_meter_en_arbol);
+                        cont_para_meter_en_arbol+=1;
+                    }
+                    Lista_de_columnas.get(numero_de_columna)[indice]=indice_B;
                 }
                 if(indice==3){//binario
-                    BinaryTree<String,Integer> indice_binario=new BinaryTree<>();//el string es el elemento a buscar, el Integer es un indice de la lista lista_de_filas que indica en cual fila esta el elemento
+                    BinaryTree<String, Integer> indice_Binario = new BinaryTree<>();//el string es el elemento a buscar, el Integer es un indice de la lista lista_de_filas que indica en cual fila esta el elemento
                     int cont_para_meter_en_arbol=0;
                     for(String i:por_meter_a_arbol){
-                        indice_binario.add(i,cont_para_meter_en_arbol);
+                        indice_Binario.add(i,cont_para_meter_en_arbol);
                         cont_para_meter_en_arbol+=1;
                     }
+                    Lista_de_columnas.get(numero_de_columna)[indice]=indice_Binario;
                 }
                 if(indice==4){//lista
-                    LinkedList<String,Integer> indice_lista=new LinkedList<>();//el string es el elemento a buscar, el Integer es un indice de la lista lista_de_filas que indica en cual fila esta el elemento
+                    LinkedList<String, Integer> indice_lista = new LinkedList<>();//el string es el elemento a buscar, el Integer es un indice de la lista lista_de_filas que indica en cual fila esta el elemento
                     int cont_para_meter_en_arbol=0;
                     for(String i:por_meter_a_arbol){
                         indice_lista.addLast(i,cont_para_meter_en_arbol);
                         cont_para_meter_en_arbol+=1;
                     }
+                    Lista_de_columnas.get(numero_de_columna)[indice]=indice_lista;
                 }
                 if(indice==5){//Rojo-negro
-                    RedBlackTree<String,Integer> indice_RedBlack=new RedBlackTree<>();//el string es el elemento a buscar, el Integer es un indice de la lista lista_de_filas que indica en cual fila esta el elemento
+                    RedBlackTree<String, Integer> indice_Red_black = new RedBlackTree<>();//el string es el elemento a buscar, el Integer es un indice de la lista lista_de_filas que indica en cual fila esta el elemento
                     int cont_para_meter_en_arbol=0;
-                    for(String i:por_meter_a_arbol) {
-                        indice_RedBlack.insert( i, cont_para_meter_en_arbol);
-                        cont_para_meter_en_arbol += 1;
+                    for(String i:por_meter_a_arbol){
+                        indice_Red_black.insert(i,cont_para_meter_en_arbol);
+                        cont_para_meter_en_arbol+=1;
                     }
+                    Lista_de_columnas.get(numero_de_columna)[indice]=indice_Red_black;
                 }
                 if(indice==6){//splay
-                    SplayTree<String,Integer> indice_Splay=new SplayTree<>();//el string es el elemento a buscar, el Integer es un indice de la lista lista_de_filas que indica en cual fila esta el elemento
+                    SplayTree<String, Integer> indice_splay = new SplayTree<>();//el string es el elemento a buscar, el Integer es un indice de la lista lista_de_filas que indica en cual fila esta el elemento
                     int cont_para_meter_en_arbol=0;
-                    for(String i:por_meter_a_arbol) {
-                        indice_Splay.insert(i, cont_para_meter_en_arbol);
-                        cont_para_meter_en_arbol += 1;
+                    for(String i:por_meter_a_arbol){
+                        indice_splay.insert(i,cont_para_meter_en_arbol);
+                        cont_para_meter_en_arbol+=1;
                     }
-
+                    Lista_de_columnas.get(numero_de_columna)[indice]=indice_splay;
                 }
             }
 
         });
+
+        b7.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int indice=escoger_estructuras.getSelectedIndex();
+                int numero_de_columna=crear_indice.getSelectedIndex();
+                Lista_de_columnas.get(numero_de_columna)[indice]=null;
+
+            }
+        });
+
+
 
         JScrollPane pane = new JScrollPane(esquema);
         pane.setBounds(0,0,880,200);
@@ -415,6 +529,7 @@ public class Esquema extends JFrame {
         frame.add(b4);
         frame.add(b5);
         frame.add(b6);
+        frame.add(b7);
         frame.add(escoger_estructuras);
 
 
