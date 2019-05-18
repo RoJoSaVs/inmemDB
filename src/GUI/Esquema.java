@@ -8,6 +8,8 @@ import Logic.BinaryTree.BinaryTree;
 import Logic.List.LinkedList;
 import Logic.RedBlack.RedBlackTree;
 import Logic.Splay.SplayTree;
+import Logic.verifcar_elementos_repetidos_en_lista;
+
 import server.JsonCreator;
 import server.JsonToSend;
 import server.Server;
@@ -402,101 +404,105 @@ public class Esquema extends JFrame {
         b6.addActionListener(new ActionListener() {////////////////////////////////
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (Lista_de_columnas==null){
-                    for(Object i:paracolumnas){
-                        Lista_de_columnas=new ArrayList<Object[]>();
-                        Object[] lista_de_estructuras_sobre_una_columna={null,null,null,null,null,null,null};
+                if (Lista_de_columnas == null) {
+                    for (Object i : paracolumnas) {
+                        Lista_de_columnas = new ArrayList<Object[]>();
+                        Object[] lista_de_estructuras_sobre_una_columna = {null, null, null, null, null, null, null};
                         Lista_de_columnas.add(lista_de_estructuras_sobre_una_columna);
                     }
                 }
-                int indice=escoger_estructuras.getSelectedIndex();
-                int cont_para_por_meter_a_arbol=0;
-                int numero_de_columna=crear_indice.getSelectedIndex();
-                ArrayList<String> por_meter_a_arbol=new ArrayList<String>();
-                ArrayList<String> tmp=new ArrayList<String>();
-                if(lista_de_filas.isEmpty()) {
+                int indice = escoger_estructuras.getSelectedIndex();
+                int cont_para_por_meter_a_arbol = 0;
+                int numero_de_columna = crear_indice.getSelectedIndex();
+                ArrayList<String> por_meter_a_arbol = new ArrayList<String>();
+                ArrayList<String> tmp = new ArrayList<String>();
+                if (lista_de_filas.isEmpty()) {
                     for (String i : filas) {
                         if (!i.equals(" ")) {
                             tmp.add(i);
-                        }
-                        else {
+                        } else {
                             lista_de_filas.add(tmp);
                             tmp = new ArrayList<String>();
                         }
                     }
                 }
-                for(String i:filas){
-                    if(cont_para_por_meter_a_arbol==numero_de_columna){
+                for (String i : filas) {
+                    if (cont_para_por_meter_a_arbol == numero_de_columna) {
                         por_meter_a_arbol.add(i);
                     }
-                    if(i.equals(" ")){
-                        cont_para_por_meter_a_arbol=-1;//deberia reiniciar el contador, es -1 para que cuando se le suma 1 se reinicie
+                    if (i.equals(" ")) {
+                        cont_para_por_meter_a_arbol = -1;//deberia reiniciar el contador, es -1 para que cuando se le suma 1 se reinicie
                     }
-                    cont_para_por_meter_a_arbol+=1;
+                    cont_para_por_meter_a_arbol += 1;
                 }
-                //meter en los arboles
-                if(indice==0){//AA
-                    AA<String, Integer> indice_AA = new AA<>();//el string es el elemento a buscar, el Integer es un indice de la lista lista_de_filas que indica en cual fila esta el elemento
-                    int cont_para_meter_en_arbol=0;
-                    for(String i:por_meter_a_arbol){
-                        indice_AA.insertar(i,cont_para_meter_en_arbol);
-                        cont_para_meter_en_arbol+=1;
+                if (!verifcar_elementos_repetidos_en_lista.prueba(por_meter_a_arbol)) {
+                    //meter en los arboles
+                    if (indice == 0) {//AA
+                        AA<String, Integer> indice_AA = new AA<>();//el string es el elemento a buscar, el Integer es un indice de la lista lista_de_filas que indica en cual fila esta el elemento
+                        int cont_para_meter_en_arbol = 0;
+                        for (String i : por_meter_a_arbol) {
+                            indice_AA.insertar(i, cont_para_meter_en_arbol);
+                            cont_para_meter_en_arbol += 1;
+                        }
+                        Lista_de_columnas.get(numero_de_columna)[0] = indice_AA;
                     }
-                    Lista_de_columnas.get(numero_de_columna)[0]=indice_AA;
+                    if (indice == 1) {//AVL
+                        AVLTree<String, Integer> indice_AVL = new AVLTree<>();//el string es el elemento a buscar, el Integer es un indice de la lista lista_de_filas que indica en cual fila esta el elemento
+                        int cont_para_meter_en_arbol = 0;
+                        for (String i : por_meter_a_arbol) {
+                            indice_AVL.insert(i, cont_para_meter_en_arbol);
+                            cont_para_meter_en_arbol += 1;
+                        }
+                        Lista_de_columnas.get(numero_de_columna)[indice] = indice_AVL;
+                    }
+                    if (indice == 2) {//B
+                        B_tree<String, Integer> indice_B = new B_tree<>();//el string es el elemento a buscar, el Integer es un indice de la lista lista_de_filas que indica en cual fila esta el elemento
+                        int cont_para_meter_en_arbol = 0;
+                        for (String i : por_meter_a_arbol) {
+                            indice_B.put(i, cont_para_meter_en_arbol);
+                            cont_para_meter_en_arbol += 1;
+                        }
+                        Lista_de_columnas.get(numero_de_columna)[indice] = indice_B;
+                    }
+                    if (indice == 3) {//binario
+                        BinaryTree<String, Integer> indice_Binario = new BinaryTree<>();//el string es el elemento a buscar, el Integer es un indice de la lista lista_de_filas que indica en cual fila esta el elemento
+                        int cont_para_meter_en_arbol = 0;
+                        for (String i : por_meter_a_arbol) {
+                            indice_Binario.add(i, cont_para_meter_en_arbol);
+                            cont_para_meter_en_arbol += 1;
+                        }
+                        Lista_de_columnas.get(numero_de_columna)[indice] = indice_Binario;
+                    }
+                    if (indice == 4) {//lista
+                        LinkedList<String, Integer> indice_lista = new LinkedList<>();//el string es el elemento a buscar, el Integer es un indice de la lista lista_de_filas que indica en cual fila esta el elemento
+                        int cont_para_meter_en_arbol = 0;
+                        for (String i : por_meter_a_arbol) {
+                            indice_lista.addLast(i, cont_para_meter_en_arbol);
+                            cont_para_meter_en_arbol += 1;
+                        }
+                        Lista_de_columnas.get(numero_de_columna)[indice] = indice_lista;
+                    }
+                    if (indice == 5) {//Rojo-negro
+                        RedBlackTree<String, Integer> indice_Red_black = new RedBlackTree<>();//el string es el elemento a buscar, el Integer es un indice de la lista lista_de_filas que indica en cual fila esta el elemento
+                        int cont_para_meter_en_arbol = 0;
+                        for (String i : por_meter_a_arbol) {
+                            indice_Red_black.insert(i, cont_para_meter_en_arbol);
+                            cont_para_meter_en_arbol += 1;
+                        }
+                        Lista_de_columnas.get(numero_de_columna)[indice] = indice_Red_black;
+                    }
+                    if (indice == 6) {//splay
+                        SplayTree<String, Integer> indice_splay = new SplayTree<>();//el string es el elemento a buscar, el Integer es un indice de la lista lista_de_filas que indica en cual fila esta el elemento
+                        int cont_para_meter_en_arbol = 0;
+                        for (String i : por_meter_a_arbol) {
+                            indice_splay.insert(i, cont_para_meter_en_arbol);
+                            cont_para_meter_en_arbol += 1;
+                        }
+                        Lista_de_columnas.get(numero_de_columna)[indice] = indice_splay;
+                    }
                 }
-                if(indice==1){//AVL
-                    AVLTree<String, Integer> indice_AVL = new AVLTree<>();//el string es el elemento a buscar, el Integer es un indice de la lista lista_de_filas que indica en cual fila esta el elemento
-                    int cont_para_meter_en_arbol=0;
-                    for(String i:por_meter_a_arbol){
-                        indice_AVL.insert(i,cont_para_meter_en_arbol);
-                        cont_para_meter_en_arbol+=1;
-                    }
-                    Lista_de_columnas.get(numero_de_columna)[indice]=indice_AVL;
-                }
-                if(indice==2) {//B
-                    B_tree<String, Integer> indice_B = new B_tree<>();//el string es el elemento a buscar, el Integer es un indice de la lista lista_de_filas que indica en cual fila esta el elemento
-                    int cont_para_meter_en_arbol=0;
-                    for(String i:por_meter_a_arbol){
-                        indice_B.put(i,cont_para_meter_en_arbol);
-                        cont_para_meter_en_arbol+=1;
-                    }
-                    Lista_de_columnas.get(numero_de_columna)[indice]=indice_B;
-                }
-                if(indice==3){//binario
-                    BinaryTree<String, Integer> indice_Binario = new BinaryTree<>();//el string es el elemento a buscar, el Integer es un indice de la lista lista_de_filas que indica en cual fila esta el elemento
-                    int cont_para_meter_en_arbol=0;
-                    for(String i:por_meter_a_arbol){
-                        indice_Binario.add(i,cont_para_meter_en_arbol);
-                        cont_para_meter_en_arbol+=1;
-                    }
-                    Lista_de_columnas.get(numero_de_columna)[indice]=indice_Binario;
-                }
-                if(indice==4){//lista
-                    LinkedList<String, Integer> indice_lista = new LinkedList<>();//el string es el elemento a buscar, el Integer es un indice de la lista lista_de_filas que indica en cual fila esta el elemento
-                    int cont_para_meter_en_arbol=0;
-                    for(String i:por_meter_a_arbol){
-                        indice_lista.addLast(i,cont_para_meter_en_arbol);
-                        cont_para_meter_en_arbol+=1;
-                    }
-                    Lista_de_columnas.get(numero_de_columna)[indice]=indice_lista;
-                }
-                if(indice==5){//Rojo-negro
-                    RedBlackTree<String, Integer> indice_Red_black = new RedBlackTree<>();//el string es el elemento a buscar, el Integer es un indice de la lista lista_de_filas que indica en cual fila esta el elemento
-                    int cont_para_meter_en_arbol=0;
-                    for(String i:por_meter_a_arbol){
-                        indice_Red_black.insert(i,cont_para_meter_en_arbol);
-                        cont_para_meter_en_arbol+=1;
-                    }
-                    Lista_de_columnas.get(numero_de_columna)[indice]=indice_Red_black;
-                }
-                if(indice==6){//splay
-                    SplayTree<String, Integer> indice_splay = new SplayTree<>();//el string es el elemento a buscar, el Integer es un indice de la lista lista_de_filas que indica en cual fila esta el elemento
-                    int cont_para_meter_en_arbol=0;
-                    for(String i:por_meter_a_arbol){
-                        indice_splay.insert(i,cont_para_meter_en_arbol);
-                        cont_para_meter_en_arbol+=1;
-                    }
-                    Lista_de_columnas.get(numero_de_columna)[indice]=indice_splay;
+                else{
+                    JOptionPane.showMessageDialog(null,"verifique que no se repitan elementos");
                 }
             }
 
