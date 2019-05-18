@@ -179,14 +179,23 @@ public class Ventana extends JFrame {
                     JOptionPane.showMessageDialog(agregar_c, "Favor agregar un título al esquema");
                 }
                 else {
-                    //Esquema E = new Esquema();  NO SE ESTA MOSTRANDO EL ESQUEMA, SINO QUE SE ESTA CREANDO UNO NUEVO
-                    E.Esquema2(paracolumnas, parafilas, esquema_titulo, contador);
-                    E.g_paracolumnas = paracolumnas;
-                    E.g_parafilas = E.todasfilas;
-                    E.g_titulo = esquema_titulo;
-                    E.tipos = tiposva;
-                    E.g_conteo = contador;
-                    System.out.println(Contenedor_de_esquemas.lista_de_esquemas.size());
+                    if (paracolumnas == null) {
+                        UIManager.put("OptionPane.messageForeground", Color.decode("#B76EF1"));
+                        UIManager.put("OptionPane.background", Color.decode("#060734"));
+                        UIManager.put("OptionPane.messagebackground", Color.decode("#060734"));
+                        UIManager.put("Panel.background", Color.decode("#060734"));
+                        JOptionPane.showMessageDialog(agregar_c, "Favor agregar una columna");
+                    }
+                    else {
+                        Esquema E = new Esquema();// NO SE ESTA MOSTRANDO EL ESQUEMA, SINO QUE SE ESTA CREANDO UNO NUEVO
+                        E.Esquema2(paracolumnas, parafilas, esquema_titulo, contador);
+                        E.g_paracolumnas = paracolumnas;
+                        E.g_parafilas = E.todasfilas;
+                        E.g_titulo = esquema_titulo;
+                        E.tipos = tiposva;
+                        E.g_conteo = contador;
+                        System.out.println(Contenedor_de_esquemas.lista_de_esquemas.size());
+                    }
                 }
             }
         });

@@ -29,6 +29,7 @@ public class Esquema extends JFrame {
     public String dato;
     public int aumento = 0;
     public int indice = 0;
+    public int ubicacion=0;
 
     public JLabel eliminar,agregar, modificar = new JLabel();
 
@@ -235,6 +236,16 @@ public class Esquema extends JFrame {
         combo.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                if(combo.getSelectedIndex()==ubicacion){
+                    ubicacion++;
+                }
+                else{
+                    UIManager.put("OptionPane.messageForeground", Color.decode("#B76EF1"));
+                    UIManager.put("OptionPane.background", Color.decode("#060734"));
+                    UIManager.put("OptionPane.messagebackground", Color.decode("#060734"));
+                    UIManager.put("Panel.background", Color.decode("#060734"));
+                    JOptionPane.showMessageDialog(combo, "favor seleccionar los elementos en orden");
+                }
             }
         });
 
@@ -253,6 +264,7 @@ public class Esquema extends JFrame {
                     }
                     modelo.addRow(ftotal);
                     aumento=0;
+                    ubicacion=0;
                     indice++;
                 }
                 //HASTA AQUÍ, LO DEMÁS QUEDA IGUAL
@@ -300,6 +312,7 @@ public class Esquema extends JFrame {
         b5.addActionListener(new ActionListener() {/////////////////////////
             @Override
             public void actionPerformed(ActionEvent e) {
+                long inicial=System.nanoTime();
                 try {
                     JsonCreator jsonCreator = new JsonCreator();
                     ArrayList<JsonToSend> listaDeEsquemas = jsonCreator.separadorDeEsquemas(Contenedor_de_esquemas.getLista_de_esquemas());
@@ -321,13 +334,19 @@ public class Esquema extends JFrame {
                         habia_algo=true;
                         if (i instanceof AA){
                             AA_container contenedor_del_valor=new AA_container();
-
                             ((AA) i).existe(por_buscar,contenedor_del_valor);
                             if(contenedor_del_valor.value_del_nodo!=null){
-                                JOptionPane.showMessageDialog(null,(lista_de_filas.get((Integer) contenedor_del_valor.value_del_nodo)).toString());
-                                System.out.println(lista_de_filas.get((Integer) contenedor_del_valor.value_del_nodo));
+                                UIManager.put("OptionPane.messageForeground", Color.decode("#B76EF1"));
+                                UIManager.put("OptionPane.background", Color.decode("#060734"));
+                                UIManager.put("OptionPane.messagebackground", Color.decode("#060734"));
+                                UIManager.put("Panel.background", Color.decode("#060734"));
+                                JOptionPane.showMessageDialog(null,(lista_de_filas.get((Integer) contenedor_del_valor.value_del_nodo)).toString()+"\nEl tiempo de búsqueda fue:"+(System.nanoTime()-inicial)+"nS", "AA", JOptionPane.INFORMATION_MESSAGE);
                             }
                             else{
+                                UIManager.put("OptionPane.messageForeground", Color.decode("#B76EF1"));
+                                UIManager.put("OptionPane.background", Color.decode("#060734"));
+                                UIManager.put("OptionPane.messagebackground", Color.decode("#060734"));
+                                UIManager.put("Panel.background", Color.decode("#060734"));
                                 JOptionPane.showMessageDialog(null,"no se encontró ");
                             }
 
@@ -335,10 +354,17 @@ public class Esquema extends JFrame {
                         if (i instanceof AVLTree){
                             Integer resultado = (Integer) ((AVLTree) i).search(por_buscar);
                             if(resultado!=null) {
-                                JOptionPane.showMessageDialog(null, lista_de_filas.get(resultado).toString());
-                                System.out.println(lista_de_filas.get(resultado));
+                                UIManager.put("OptionPane.messageForeground", Color.decode("#B76EF1"));
+                                UIManager.put("OptionPane.background", Color.decode("#060734"));
+                                UIManager.put("OptionPane.messagebackground", Color.decode("#060734"));
+                                UIManager.put("Panel.background", Color.decode("#060734"));
+                                JOptionPane.showMessageDialog(null, lista_de_filas.get(resultado).toString()+"\nEl tiempo de búsqueda fue:"+(System.nanoTime()-inicial)+"nS","AVL", JOptionPane.INFORMATION_MESSAGE);
                             }
                             else{
+                                UIManager.put("OptionPane.messageForeground", Color.decode("#B76EF1"));
+                                UIManager.put("OptionPane.background", Color.decode("#060734"));
+                                UIManager.put("OptionPane.messagebackground", Color.decode("#060734"));
+                                UIManager.put("Panel.background", Color.decode("#060734"));
                                 JOptionPane.showMessageDialog(null,"no se encontró ");
                             }
 
@@ -346,51 +372,86 @@ public class Esquema extends JFrame {
                         if (i instanceof B_tree){
                             Integer resultado = (Integer) ((B_tree) i).get(por_buscar);
                             if(resultado!=null) {
-                                JOptionPane.showMessageDialog(null, lista_de_filas.get(resultado).toString());
-                                System.out.println(lista_de_filas.get(resultado));
+                                UIManager.put("OptionPane.messageForeground", Color.decode("#B76EF1"));
+                                UIManager.put("OptionPane.background", Color.decode("#060734"));
+                                UIManager.put("OptionPane.messagebackground", Color.decode("#060734"));
+                                UIManager.put("Panel.background", Color.decode("#060734"));
+                                JOptionPane.showMessageDialog(null, lista_de_filas.get(resultado).toString()+"\nEl tiempo de búsqueda fue:"+(System.nanoTime()-inicial)+"nS","Arbol B", JOptionPane.INFORMATION_MESSAGE);
                             }
                             else{
+                                UIManager.put("OptionPane.messageForeground", Color.decode("#B76EF1"));
+                                UIManager.put("OptionPane.background", Color.decode("#060734"));
+                                UIManager.put("OptionPane.messagebackground", Color.decode("#060734"));
+                                UIManager.put("Panel.background", Color.decode("#060734"));
                                 JOptionPane.showMessageDialog(null,"no se encontró ");
                             }
                         }
                         if (i instanceof BinaryTree){
                             Integer resultado = (Integer) ((BinaryTree) i).containsNode(por_buscar, 0).value;
                             if(resultado!=null) {
-                                JOptionPane.showMessageDialog(null, lista_de_filas.get(resultado).toString());
-                                System.out.println(lista_de_filas.get(resultado));
+                                UIManager.put("OptionPane.messageForeground", Color.decode("#B76EF1"));
+                                UIManager.put("OptionPane.background", Color.decode("#060734"));
+                                UIManager.put("OptionPane.messagebackground", Color.decode("#060734"));
+                                UIManager.put("Panel.background", Color.decode("#060734"));
+                                JOptionPane.showMessageDialog(null, lista_de_filas.get(resultado).toString()+"\nEl tiempo de búsqueda fue:"+(System.nanoTime()-inicial)+"nS","Arbol Binario", JOptionPane.INFORMATION_MESSAGE);
                             }
                             else{
+                                UIManager.put("OptionPane.messageForeground", Color.decode("#B76EF1"));
+                                UIManager.put("OptionPane.background", Color.decode("#060734"));
+                                UIManager.put("OptionPane.messagebackground", Color.decode("#060734"));
+                                UIManager.put("Panel.background", Color.decode("#060734"));
                                 JOptionPane.showMessageDialog(null,"no se encontró ");
                             }
                         }
                         if (i instanceof LinkedList){
                             Integer resultado = (Integer) ((LinkedList) i).find(por_buscar);
                             if(resultado!=null) {
-                                JOptionPane.showMessageDialog(null, lista_de_filas.get(resultado).toString());
-                                System.out.println(lista_de_filas.get(resultado));
+                                UIManager.put("OptionPane.messageForeground", Color.decode("#B76EF1"));
+                                UIManager.put("OptionPane.background", Color.decode("#060734"));
+                                UIManager.put("OptionPane.messagebackground", Color.decode("#060734"));
+                                UIManager.put("Panel.background", Color.decode("#060734"));
+                                JOptionPane.showMessageDialog(null, lista_de_filas.get(resultado).toString()+"\nEl tiempo de búsqueda fue:"+(System.nanoTime()-inicial)+"nS","Lista enlazada", JOptionPane.INFORMATION_MESSAGE);
                             }
                             else{
+                                UIManager.put("OptionPane.messageForeground", Color.decode("#B76EF1"));
+                                UIManager.put("OptionPane.background", Color.decode("#060734"));
+                                UIManager.put("OptionPane.messagebackground", Color.decode("#060734"));
+                                UIManager.put("Panel.background", Color.decode("#060734"));
                                 JOptionPane.showMessageDialog(null,"no se encontró ");
                             }
                         }
                         if (i instanceof RedBlackTree){
                             Integer resultado = (Integer) ((RedBlackTree) i).buscar(por_buscar);
                             if(resultado!=null) {
-                                JOptionPane.showMessageDialog(null, lista_de_filas.get(resultado).toString());
-                                System.out.println(lista_de_filas.get(resultado));
+                                UIManager.put("OptionPane.messageForeground", Color.decode("#B76EF1"));
+                                UIManager.put("OptionPane.background", Color.decode("#060734"));
+                                UIManager.put("OptionPane.messagebackground", Color.decode("#060734"));
+                                UIManager.put("Panel.background", Color.decode("#060734"));
+                                JOptionPane.showMessageDialog(null, lista_de_filas.get(resultado).toString()+"\nEl tiempo de búsqueda fue:"+(System.nanoTime()-inicial)+"nS","Rojo-Negro", JOptionPane.INFORMATION_MESSAGE);
                             }
                             else{
+                                UIManager.put("OptionPane.messageForeground", Color.decode("#B76EF1"));
+                                UIManager.put("OptionPane.background", Color.decode("#060734"));
+                                UIManager.put("OptionPane.messagebackground", Color.decode("#060734"));
+                                UIManager.put("Panel.background", Color.decode("#060734"));
                                 JOptionPane.showMessageDialog(null,"no se encontró ");
                             }
                         }
                         if (i instanceof SplayTree){
                             Integer resultado = (Integer) ((SplayTree) i).searchTree(por_buscar,0).value;
                             if(resultado!=null) {
-                                JOptionPane.showMessageDialog(null, lista_de_filas.get(resultado).toString());
-                                System.out.println(lista_de_filas.get(resultado));
+                                UIManager.put("OptionPane.messageForeground", Color.decode("#B76EF1"));
+                                UIManager.put("OptionPane.background", Color.decode("#060734"));
+                                UIManager.put("OptionPane.messagebackground", Color.decode("#060734"));
+                                UIManager.put("Panel.background", Color.decode("#060734"));
+                                JOptionPane.showMessageDialog(null, lista_de_filas.get(resultado).toString()+"\nEl tiempo de búsqueda fue:"+(System.nanoTime()-inicial)+"nS","Splay", JOptionPane.INFORMATION_MESSAGE);
                             }
                             else{
-                                JOptionPane.showMessageDialog(null,"no se encontró");
+                                UIManager.put("OptionPane.messageForeground", Color.decode("#B76EF1"));
+                                UIManager.put("OptionPane.background", Color.decode("#060734"));
+                                UIManager.put("OptionPane.messagebackground", Color.decode("#060734"));
+                                UIManager.put("Panel.background", Color.decode("#060734"));
+                                JOptionPane.showMessageDialog(null,"no se encontró ");
                             }
                         }
 

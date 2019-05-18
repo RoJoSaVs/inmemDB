@@ -1,7 +1,7 @@
 {
-  "g_paracolumnas" : [ "fg", "hfb" ],
-  "g_parafilas" : [ ],
-  "g_titulo" : "gfds",
-  "tipos" : [ "string", "string" ],
-  "g_conteo" : 2
+  "g_paracolumnas" : null,
+  "g_parafilas" : null,
+  "g_titulo" : null,
+  "tipos" : [ ],
+  "g_conteo" : 0
 }

@@ -17,7 +17,6 @@ public class verifcar_elementos_repetidos_en_lista {
                 }
             }
         }
-        System.out.println(se_repite);
         return (se_repite);
     }
 }
