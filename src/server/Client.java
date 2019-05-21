@@ -1,5 +1,8 @@
 package server;
 
+import GUI.Contenedor_de_esquemas;
+import GUI.Esquema;
+
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -7,6 +10,7 @@ import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.UnknownHostException;
+import java.util.ArrayList;
 
 public class Client {
 
@@ -30,15 +34,39 @@ public class Client {
      * @throws IOException
      */
     public void listen(ServerSocket server) throws IOException {
+        boolean running = true;
+
         Socket socket;
         socket = server.accept();
 
-        DataInputStream incomming = new DataInputStream(socket.getInputStream());
+        while (running){
+            DataInputStream incomming = new DataInputStream(socket.getInputStream());
 
-        String message;
-        message = incomming.readUTF();
-        System.out.println(message);
-        socket.close();
+            String message;
+            message = incomming.readUTF();
+            if (message == "ended"){
+                running = false;
+                break;
+            } else {
+                System.out.println("Recibi el mensaje");
+                socket.close();
+
+                JsonCreator jsonCreator = new JsonCreator();
+                ArrayList<Esquema> nueva_memoria = new ArrayList<>();
+                JsonToSend data = jsonCreator.unSerializer(message);
+                Esquema nuevoEsquema = new Esquema();
+                nuevoEsquema.g_parafilas = data.getG_parafilas();
+                nuevoEsquema.g_paracolumnas = data.getG_paracolumnas();
+                nuevoEsquema.g_conteo = data.getG_conteo();
+                nuevoEsquema.g_titulo = data.getG_titulo();
+                nuevoEsquema.tipos = data.getTipos();
+                nueva_memoria.add(nuevoEsquema);
+                Contenedor_de_esquemas.setLista_de_esquemas(nueva_memoria);
+                System.out.println("El cliente recibio el mensaje y seteo lo debido");
+            }
+
+        }
+
     }
 
     /**

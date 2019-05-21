@@ -1,24 +1,25 @@
 package server;
 
-import GUI.Contenedor_de_esquemas;
-import GUI.Esquema;
-import GUI.Main;
-
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
-import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.net.UnknownHostException;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class Server {
 
     private ArrayList<String> ips = new ArrayList<>();
+    private ArrayList<Integer> ports = new ArrayList<>();
+
+    public ArrayList<Integer> getPorts() {
+        return ports;
+    }
+
+
+
     private boolean enviar = true;
-    private static String serverIp = "localhost";
+    private static String serverIp = "192.168.43.77";
     private static int portClientSend = 8000;
     private static int getPortClientHear = 8081;
 
@@ -40,6 +41,8 @@ public class Server {
      */
     private void run() throws IOException{
         ServerSocket serverSocket = new ServerSocket(8000);
+        ports.add(8081);
+        ports.add(8082);
         while (true) {
             listen(serverSocket);
         }
@@ -72,27 +75,36 @@ public class Server {
      */
     public void checkIp(String message) throws IOException {
         if (message.startsWith("192") || message.startsWith("127")){
-            ips.add(message);
-            System.out.println(ips.toString());
+            ArrayList<String> adresses = split(message);
+            ips.add(adresses.get(0));
+            ports.add(new Integer(adresses.get(1)));
+            System.out.println(ips);
+            System.out.println(ports);
         } else {
-            for (String i: ips){
-                this.SendMessage(i, getGetPortClientHear(), message);
-                JsonCreator jsonCreator = new JsonCreator();
-                ArrayList<Esquema> nueva_memoria = new ArrayList<>();
-                JsonToSend data = jsonCreator.unSerializer(message);
-                Esquema nuevoEsquema = new Esquema();
-
-                nuevoEsquema.g_parafilas = data.getG_parafilas();
-                nuevoEsquema.g_paracolumnas = data.getG_paracolumnas();
-                nuevoEsquema.g_conteo = data.getG_conteo();
-                nuevoEsquema.g_titulo = data.getG_titulo();
-                nuevoEsquema.tipos = data.getTipos();
-                nueva_memoria.add(nuevoEsquema);
-                Contenedor_de_esquemas.setLista_de_esquemas(nueva_memoria);
-
+            int cont = 0;
+            for (String ip: ips){
+                SendMessage(ip, ports.get(cont), message);
+                System.out.println("El server recibio el mensaje y lo envio a " + ip + "al puerto" + ports.get(cont));
+                cont += 1;
             }
-
         }
+    }
+
+    public ArrayList<java.lang.String> split(String message){
+        String ip;
+        String port;
+        ArrayList<String> list = new ArrayList<>();
+        for (int i = 0; i < message.length(); i++){
+            char letter = message.charAt(i);
+            if (letter == ','){
+                ip = message.substring(0, i);
+                port = message.substring(i+1);
+                list.add(ip);
+                list.add(port);
+            }
+        }
+        return list;
+
     }
 
     /**

@@ -1,14 +1,22 @@
 package GUI;
+import server.JsonCreator;
+import server.JsonToSend;
+import server.Server;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.util.ArrayList;
 
 public class Entrar extends JFrame{
 
     JLabel titulo = new JLabel();
     JButton crear = new JButton();
     JComboBox opciones = new JComboBox();
+    JButton recibir_JSON = new JButton();
+    JButton enviar_JSON = new JButton();
 
 
     public void Entrar(){
@@ -35,6 +43,48 @@ public class Entrar extends JFrame{
                 dispose();
             }});
         add(crear);
+
+        //BOTÓN PARA RECIBIR ESQUEMA
+        recibir_JSON = new JButton("RECIBIR");
+        recibir_JSON.setBackground(Color.decode("#3B006A"));
+        recibir_JSON.setForeground(Color.decode("#B76EF1"));
+        recibir_JSON.setBounds(210, 140, 100, 20);
+        recibir_JSON.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    Main.getClient().listen(Main.getServerSocket());
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+                System.out.println(Contenedor_de_esquemas.lista_de_esquemas);
+                Entrar E = new Entrar();
+                E.Entrar();
+                dispose();
+            }});
+        add(recibir_JSON);
+
+        //BOTÓN PARA ENVIAR ESQUEMA
+        enviar_JSON = new JButton("ENVIAR");
+        enviar_JSON.setBackground(Color.decode("#3B006A"));
+        enviar_JSON.setForeground(Color.decode("#B76EF1"));
+        enviar_JSON.setBounds(100, 140, 100, 20);
+        enviar_JSON.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    JsonCreator jsonCreator = new JsonCreator();
+                    ArrayList<JsonToSend> listaDeEsquemas = jsonCreator.separadorDeEsquemas(Contenedor_de_esquemas.getLista_de_esquemas());
+                    for (JsonToSend i: listaDeEsquemas){
+                        String json = jsonCreator.serializer(i);
+                        Main.getClient().SendMessage(Server.getServerIp(), Server.getPortClientSend(), json);
+                        System.out.println(json);
+                    }
+                    Main.getClient().SendMessage(Server.getServerIp(), Server.getPortClientSend(), "ended");
+
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+            }});
+        add(enviar_JSON);
 
         //OPCIONES DE ESQUEMAS CREADOS
         opciones = new JComboBox();

@@ -56,7 +56,8 @@ public class JsonCreator <T>{
      * @throws IOException
      */
     public JsonToSend unSerializer(String json) throws IOException {
-        JsonToSend data = mapper.readValue(new File("Data.json"), JsonToSend.class);
+        JsonToSend data = mapper.readValue(json, JsonToSend.class);
+        System.out.println("deserialice bien y la prueba es" + data.getG_parafilas());
         return data;
     }
 

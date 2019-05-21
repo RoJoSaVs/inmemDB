@@ -13,6 +13,10 @@ public class Main {
     private static Client client = new Client();
     private static ServerSocket serverSocket;
 
+    public static ServerSocket getServerSocket() {
+        return serverSocket;
+    }
+
     static {
         try {
             serverSocket = new ServerSocket(Server.getGetPortClientHear());
@@ -29,12 +33,9 @@ public class Main {
         Entrar E = new Entrar();
         E.Entrar();
 
-
-
-        client.SendMessage(Server.getServerIp(), Server.getPortClientSend(), client.getIp());
-        client.listen(serverSocket);
-
-        System.out.println(Client.getIp());
+        String port = Integer.toString(Server.getGetPortClientHear());
+        client.SendMessage(Server.getServerIp(), Server.getPortClientSend(), (client.getIp() + "," + port));
+        System.out.println(Client.getIp() + port);
 
 
     }
