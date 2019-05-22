@@ -298,6 +298,7 @@ public class Esquema extends JFrame {
                 if (fila >=0){
                     modelo.removeRow(fila);
                     aumento--;
+                    Lista_de_columnas=null;
                 }
                 else{
                     UIManager.put("OptionPane.messageForeground", Color.decode("#B76EF1"));
