@@ -73,12 +73,13 @@ public class Entrar extends JFrame{
                 try {
                     JsonCreator jsonCreator = new JsonCreator();
                     ArrayList<JsonToSend> listaDeEsquemas = jsonCreator.separadorDeEsquemas(Contenedor_de_esquemas.getLista_de_esquemas());
-                    for (JsonToSend i: listaDeEsquemas){
-                        String json = jsonCreator.serializer(i);
+//                    for (JsonToSend i: listaDeEsquemas){
+//                        String json = jsonCreator.serializer(i);
+                    String json = jsonCreator.serializer(listaDeEsquemas);
                         Main.getClient().SendMessage(Server.getServerIp(), Server.getPortClientSend(), json);
                         System.out.println(json);
-                    }
-                    //Main.getClient().SendMessage(Server.getServerIp(), Server.getPortClientSend(), "ended");
+                    /*}*/
+                //Main.getClient().SendMessage(Server.getServerIp(), Server.getPortClientSend(), "ended");
 
                 } catch (IOException ex) {
                     ex.printStackTrace();
