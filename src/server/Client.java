@@ -47,7 +47,7 @@ public class Client {
 
         if (message == "ended"){
                 running = false;
-                break;
+                //break;
             } else {
                 System.out.println("Recibi el mensaje");
 
