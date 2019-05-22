@@ -55,8 +55,13 @@ public class JsonCreator <T>{
      * @return
      * @throws IOException
      */
-    public JsonToSend unSerializer(String json) throws IOException {
-        JsonToSend data = mapper.readValue(json, JsonToSend.class);
+//    public JsonToSend unSerializer(String json) throws IOException {
+//        JsonToSend data = mapper.readValue(json, JsonToSend.class);
+//        return data;
+//    }
+
+    public ArrayList<JsonToSend> unSerializer(String json) throws IOException {
+        ArrayList<JsonToSend> data = mapper.readValue(json, ArrayList.class);
         return data;
     }
 

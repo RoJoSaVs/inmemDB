@@ -38,34 +38,50 @@ public class Client {
 
         Socket socket;
         socket = server.accept();
+        ArrayList<Esquema> nueva_memoria = new ArrayList<>();
 
         //while (running){
             DataInputStream incomming = new DataInputStream(socket.getInputStream());
-
             String message;
             message = incomming.readUTF();
-            if (message == "ended"){
+
+        if (message == "ended"){
                 running = false;
-                //break;
+                break;
             } else {
                 System.out.println("Recibi el mensaje");
-                socket.close();
 
+//                JsonCreator jsonCreator = new JsonCreator();
+//                JsonToSend data = jsonCreator.unSerializer(message);
+//                Esquema nuevoEsquema = new Esquema();
+//                nuevoEsquema.filas = data.getG_parafilas();
+//                nuevoEsquema.g_paracolumnas = data.getG_paracolumnas();
+//                nuevoEsquema.g_conteo = data.getG_conteo();
+//                nuevoEsquema.g_titulo = data.getG_titulo();
+//                nuevoEsquema.tipos = data.getTipos();
+//                nueva_memoria.add(nuevoEsquema);
+//                Contenedor_de_esquemas.setLista_de_esquemas(nueva_memoria);
+//                System.out.println("El cliente recibio el mensaje y seteo lo debido");
                 JsonCreator jsonCreator = new JsonCreator();
-                ArrayList<Esquema> nueva_memoria = new ArrayList<>();
-                JsonToSend data = jsonCreator.unSerializer(message);
-                Esquema nuevoEsquema = new Esquema();
-                nuevoEsquema.filas = data.getG_parafilas();
-                nuevoEsquema.g_paracolumnas = data.getG_paracolumnas();
-                nuevoEsquema.g_conteo = data.getG_conteo();
-                nuevoEsquema.g_titulo = data.getG_titulo();
-                nuevoEsquema.tipos = data.getTipos();
-                nueva_memoria.add(nuevoEsquema);
+                ArrayList<JsonToSend> data = jsonCreator.unSerializer(message);
+                for(JsonToSend i: data){
+                    Esquema nuevoEsquema = new Esquema();
+                    nuevoEsquema.filas = i.getG_parafilas();
+                    nuevoEsquema.g_paracolumnas = i.getG_paracolumnas();
+                    nuevoEsquema.g_conteo = i.getG_conteo();
+                    nuevoEsquema.g_titulo = i.getG_titulo();
+                    nuevoEsquema.tipos = i.getTipos();
+                    nueva_memoria.add(nuevoEsquema);
+                    System.out.println("El cliente recibio el mensaje y seteo lo debido");
+                }
                 Contenedor_de_esquemas.setLista_de_esquemas(nueva_memoria);
-                System.out.println("El cliente recibio el mensaje y seteo lo debido");
-            }
+
+
+
+        }
 
         //}
+        socket.close();
 
     }
 
@@ -83,22 +99,5 @@ public class Client {
     public static void main(String[] args) throws IOException {
 
         ServerSocket serverSocket = new ServerSocket(8081);
-
-
-        Client client = new Client();
-        client.SendMessage("172.18.191.247", 8000, "hola");
-        client.listen(serverSocket);
-
-        Client client1 = new Client();
-        client1.SendMessage("172.18.191.247", 8000, "adios perra");
-        client1.listen(serverSocket);
-
-        Client client2 = new Client();
-        client2.SendMessage("192.168.13.111", 8000, "bye bye");
-        client2.listen(serverSocket);
-
-
-
-
     }
 }
