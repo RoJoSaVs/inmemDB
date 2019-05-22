@@ -55,7 +55,7 @@ public class Client {
                 ArrayList<Esquema> nueva_memoria = new ArrayList<>();
                 JsonToSend data = jsonCreator.unSerializer(message);
                 Esquema nuevoEsquema = new Esquema();
-                nuevoEsquema.g_parafilas = data.getG_parafilas();
+                nuevoEsquema.ftotal = data.getG_parafilas();
                 nuevoEsquema.g_paracolumnas = data.getG_paracolumnas();
                 nuevoEsquema.g_conteo = data.getG_conteo();
                 nuevoEsquema.g_titulo = data.getG_titulo();
