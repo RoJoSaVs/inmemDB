@@ -2,16 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6735f950-0274-44ae-b3d7-40e61ac582ac" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Data.json" beforeDir="false" afterPath="$PROJECT_DIR$/Data.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/inmemDB/GUI/Esquema$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/inmemDB/GUI/Esquema$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/inmemDB/GUI/Esquema$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/inmemDB/GUI/Esquema$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/inmemDB/GUI/Esquema.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/inmemDB/GUI/Esquema.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/inmemDB/GUI/Ventana.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/inmemDB/GUI/Ventana.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/inmemDB/server/Client.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/inmemDB/server/Client.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/inmemDB/server/JsonCreator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/inmemDB/server/JsonCreator.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/inmemDB/server/JsonToSend.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/inmemDB/server/JsonToSend.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/Entrar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Entrar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/Ventana.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Ventana.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/inmemDB/server/Server.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/inmemDB/server/Server.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -28,11 +23,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/GUI/Entrar.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="189">
-              <caret line="99" column="70" selection-start-line="99" selection-start-column="55" selection-end-line="99" selection-end-column="70" />
+            <state relative-caret-position="129">
+              <caret line="54" column="66" selection-start-line="54" selection-start-column="66" selection-end-line="54" selection-end-column="66" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -43,8 +38,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/server/JsonCreator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="196">
-              <caret line="42" column="44" selection-start-line="42" selection-start-column="44" selection-end-line="42" selection-end-column="44" />
+            <state relative-caret-position="684">
+              <caret line="59" column="20" lean-forward="true" selection-start-line="59" selection-start-column="20" selection-end-line="59" selection-end-column="20" />
             </state>
           </provider>
         </entry>
@@ -52,17 +47,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/GUI/Esquema.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="129">
-              <caret line="317" column="42" selection-start-line="317" selection-start-column="42" selection-end-line="317" selection-end-column="42" />
+            <state relative-caret-position="153">
+              <caret line="318" column="53" lean-forward="true" selection-start-line="318" selection-start-column="53" selection-end-line="318" selection-end-column="53" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/GUI/Contenedor_de_esquemas.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
+            <state relative-caret-position="120">
+              <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
             </state>
           </provider>
         </entry>
@@ -72,6 +67,10 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="225">
               <caret line="20" column="23" selection-start-line="20" selection-start-column="23" selection-end-line="20" selection-end-column="23" />
+              <folding>
+                <element signature="e#560#561#0" expanded="true" />
+                <element signature="e#602#603#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -79,8 +78,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/server/Client.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="435">
-              <caret line="66" lean-forward="true" selection-start-line="66" selection-end-line="66" />
+            <state relative-caret-position="186">
+              <caret line="35" column="20" selection-start-line="35" selection-start-column="20" selection-end-line="35" selection-end-column="20" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -89,10 +88,19 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Data.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="90">
+              <caret line="6" column="21" lean-forward="true" selection-start-line="6" selection-end-line="7" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/GUI/Ventana.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="234">
-              <caret line="210" column="93" lean-forward="true" selection-start-line="210" selection-start-column="93" selection-end-line="210" selection-end-column="93" />
+            <state relative-caret-position="204">
+              <caret line="190" column="48" selection-start-line="190" selection-start-column="48" selection-end-line="190" selection-end-column="48" />
             </state>
           </provider>
         </entry>
@@ -100,18 +108,12 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/server/Server.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="29" column="33" selection-start-line="29" selection-start-column="33" selection-end-line="29" selection-end-column="33" />
+            <state relative-caret-position="570">
+              <caret line="44" column="12" selection-start-line="44" selection-start-column="12" selection-end-line="44" selection-end-column="12" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#371#372#0" expanded="true" />
                 <element signature="e#399#400#0" expanded="true" />
-                <element signature="e#631#632#0" expanded="true" />
-                <element signature="e#668#669#0" expanded="true" />
-                <element signature="e#716#717#0" expanded="true" />
-                <element signature="e#756#757#0" expanded="true" />
-                <element signature="e#798#799#0" expanded="true" />
-                <element signature="e#829#830#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -120,8 +122,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/GUI/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="211">
-              <caret line="35" column="38" selection-start-line="35" selection-start-column="38" selection-end-line="35" selection-end-column="38" />
+            <state relative-caret-position="210">
+              <caret line="21" column="71" selection-start-line="21" selection-start-column="51" selection-end-line="21" selection-end-column="71" />
               <folding>
                 <element signature="e#369#370#0" expanded="true" />
                 <element signature="e#404#405#0" expanded="true" />
@@ -141,10 +143,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>par</find>
-      <find>buscar</find>
-      <find>b5</find>
-      <find>paracolumnas</find>
       <find>for</find>
       <find>Contened</find>
       <find>root</find>
@@ -171,6 +169,10 @@
       <find>g_ti</find>
       <find>regres</find>
       <find>lista</find>
+      <find>send</find>
+      <find>ports</find>
+      <find>recibir</find>
+      <find>list</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -207,13 +209,13 @@
         <option value="$PROJECT_DIR$/src/GUI/r.java" />
         <option value="$PROJECT_DIR$/src/Logic/verifcar_elementos_repetidos_en_lista.java" />
         <option value="$PROJECT_DIR$/src/GUI/Esquema.java" />
-        <option value="$PROJECT_DIR$/src/GUI/Main.java" />
+        <option value="$PROJECT_DIR$/src/GUI/Ventana.java" />
         <option value="$PROJECT_DIR$/src/server/Server.java" />
-        <option value="$PROJECT_DIR$/src/server/JsonCreator.java" />
+        <option value="$PROJECT_DIR$/src/GUI/Main.java" />
         <option value="$PROJECT_DIR$/src/server/JsonToSend.java" />
+        <option value="$PROJECT_DIR$/src/server/JsonCreator.java" />
         <option value="$PROJECT_DIR$/src/server/Client.java" />
         <option value="$PROJECT_DIR$/src/GUI/Entrar.java" />
-        <option value="$PROJECT_DIR$/src/GUI/Ventana.java" />
       </list>
     </option>
   </component>
@@ -359,6 +361,7 @@
       <workItem from="1557899037567" duration="1427000" />
       <workItem from="1558459581722" duration="742000" />
       <workItem from="1558488835733" duration="4395000" />
+      <workItem from="1558493296832" duration="3476000" />
     </task>
     <task id="LOCAL-00001" summary="Last server implementation running">
       <created>1558460291856</created>
@@ -388,11 +391,25 @@
       <option name="project" value="LOCAL" />
       <updated>1558490902170</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="bugs fixed">
+      <created>1558493417403</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1558493417403</updated>
+    </task>
+    <task id="LOCAL-00006" summary="bugs fixed">
+      <created>1558496639155</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1558496639155</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="10308000" />
+    <option name="totallyTimeSpent" value="13784000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="27" width="1366" height="741" extended-state="6" />
@@ -404,10 +421,10 @@
       <window_info id="UI Designer" order="3" />
       <window_info id="Capture Tool" order="4" />
       <window_info id="Favorites" order="5" sideWeight="0.5022124" side_tool="true" weight="0.31655845" />
-      <window_info active="true" content_ui="combo" id="Project" order="6" sideWeight="0.49778762" visible="true" weight="0.22390318" />
+      <window_info active="true" content_ui="combo" id="Project" order="6" sideWeight="0.49778762" visible="true" weight="0.22692889" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.23809524" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.23809524" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -483,56 +500,42 @@
     <entry file="file://$PROJECT_DIR$/src/Logic/Splay/Node.java" />
     <entry file="file://$PROJECT_DIR$/src/Logic/BinaryTree/Node.java" />
     <entry file="file://$PROJECT_DIR$/src/Logic/BinaryTree/BinaryTree.java" />
-    <entry file="file://$PROJECT_DIR$/Data.json" />
     <entry file="file://$PROJECT_DIR$/src/Logic/Splay/SplayTree.java" />
     <entry file="file://$PROJECT_DIR$/src/Logic/AA/AA.java" />
     <entry file="file://$PROJECT_DIR$/src/GUI/f.java" />
     <entry file="file://$PROJECT_DIR$/src/GUI/Valores.java" />
     <entry file="file://$PROJECT_DIR$/src/GUI/r.java" />
     <entry file="file://$PROJECT_DIR$/src/Logic/verifcar_elementos_repetidos_en_lista.java" />
-    <entry file="file://$PROJECT_DIR$/src/GUI/Main.java">
+    <entry file="file://$PROJECT_DIR$/src/GUI/Ventana.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="211">
-          <caret line="35" column="38" selection-start-line="35" selection-start-column="38" selection-end-line="35" selection-end-column="38" />
-          <folding>
-            <element signature="e#369#370#0" expanded="true" />
-            <element signature="e#404#405#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="204">
+          <caret line="190" column="48" selection-start-line="190" selection-start-column="48" selection-end-line="190" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GUI/Esquema.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="318" column="53" lean-forward="true" selection-start-line="318" selection-start-column="53" selection-end-line="318" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Data.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="21" lean-forward="true" selection-start-line="6" selection-end-line="7" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/server/Server.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="29" column="33" selection-start-line="29" selection-start-column="33" selection-end-line="29" selection-end-column="33" />
+        <state relative-caret-position="570">
+          <caret line="44" column="12" selection-start-line="44" selection-start-column="12" selection-end-line="44" selection-end-column="12" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#371#372#0" expanded="true" />
             <element signature="e#399#400#0" expanded="true" />
-            <element signature="e#631#632#0" expanded="true" />
-            <element signature="e#668#669#0" expanded="true" />
-            <element signature="e#716#717#0" expanded="true" />
-            <element signature="e#756#757#0" expanded="true" />
-            <element signature="e#798#799#0" expanded="true" />
-            <element signature="e#829#830#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/server/Client.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="66" lean-forward="true" selection-start-line="66" selection-end-line="66" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/server/JsonCreator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
-          <caret line="42" column="44" selection-start-line="42" selection-start-column="44" selection-end-line="42" selection-end-column="44" />
         </state>
       </provider>
     </entry>
@@ -540,37 +543,55 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
           <caret line="20" column="23" selection-start-line="20" selection-start-column="23" selection-end-line="20" selection-end-column="23" />
+          <folding>
+            <element signature="e#560#561#0" expanded="true" />
+            <element signature="e#602#603#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/GUI/Entrar.java">
+    <entry file="file://$PROJECT_DIR$/src/GUI/Contenedor_de_esquemas.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="99" column="70" selection-start-line="99" selection-start-column="55" selection-end-line="99" selection-end-column="70" />
+        <state relative-caret-position="120">
+          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/server/JsonCreator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="684">
+          <caret line="59" column="20" lean-forward="true" selection-start-line="59" selection-start-column="20" selection-end-line="59" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GUI/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="21" column="71" selection-start-line="21" selection-start-column="51" selection-end-line="21" selection-end-column="71" />
+          <folding>
+            <element signature="e#369#370#0" expanded="true" />
+            <element signature="e#404#405#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/server/Client.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="186">
+          <caret line="35" column="20" selection-start-line="35" selection-start-column="20" selection-end-line="35" selection-end-column="20" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/GUI/Ventana.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="210" column="93" lean-forward="true" selection-start-line="210" selection-start-column="93" selection-end-line="210" selection-end-column="93" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/GUI/Esquema.java">
+    <entry file="file://$PROJECT_DIR$/src/GUI/Entrar.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="129">
-          <caret line="317" column="42" selection-start-line="317" selection-start-column="42" selection-end-line="317" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/GUI/Contenedor_de_esquemas.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
+          <caret line="54" column="66" selection-start-line="54" selection-start-column="66" selection-end-line="54" selection-end-column="66" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
