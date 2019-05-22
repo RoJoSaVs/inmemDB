@@ -40,7 +40,7 @@ public class JsonCreator <T>{
             JsonToSend jsonToSend = new JsonToSend();
             jsonToSend.setG_conteo(i.g_conteo);
             jsonToSend.setG_paracolumnas(i.g_paracolumnas);
-            jsonToSend.setG_parafilas(i.g_parafilas);
+            jsonToSend.setG_parafilas(i.ftotal);
             jsonToSend.setG_titulo(i.g_titulo);
             jsonToSend.setTipos(i.tipos);
             esquemasSeparados.add(jsonToSend);

@@ -31,7 +31,7 @@ public class Ventana extends JFrame {
 
     ArrayList<String> columnas = new ArrayList<String>();
     ArrayList<String> tiposva = new ArrayList<String>();
-    ArrayList<ArrayList<String>> parafilas = new ArrayList<ArrayList<String>>();
+    public ArrayList<ArrayList<String>> parafilas = new ArrayList<ArrayList<String>>();
 
     //VARIABLE QUE CONTIENE EL ESQUEMA
     public Esquema E;

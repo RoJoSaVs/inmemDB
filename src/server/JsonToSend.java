@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class JsonToSend <T> {
     public Object [] g_paracolumnas;
-    public ArrayList<ArrayList<String>> g_parafilas;
+    public String[] parafilas;
     public String g_titulo;
     public ArrayList<String> tipos;
     public int g_conteo;
@@ -21,11 +21,11 @@ public class JsonToSend <T> {
     }
 
     public ArrayList<ArrayList<String>> getG_parafilas() {
-        return g_parafilas;
+        return parafilas;
     }
 
-    public void setG_parafilas(ArrayList<ArrayList<String>> g_parafilas) {
-        this.g_parafilas = g_parafilas;
+    public void setG_parafilas(String[] parafilas) {
+        this.parafilas = parafilas;
     }
 
     public String getG_titulo() {

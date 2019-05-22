@@ -42,7 +42,7 @@ public class Esquema extends JFrame {
     public String[] estructuras={"AA","AVL","B","Binario","Lista","Rojo-Negro","Splay"};
     public ArrayList<Object[]> Lista_de_columnas = null;
 
-    private static String[] ftotal = null;
+    public static String[] ftotal = null;
     private static String[] fauxiliar = null;
     private static String[] ftodas = null;
 
