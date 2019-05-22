@@ -1,8 +1,5 @@
 package server;
 
-import GUI.Esquema;
-import GUI.Ventana;
-
 import java.util.ArrayList;
 
 public class JsonToSend <T> {
@@ -20,7 +17,7 @@ public class JsonToSend <T> {
         this.g_paracolumnas = g_paracolumnas;
     }
 
-    public ArrayList<ArrayList<String>> getG_parafilas() {
+    public String[] getG_parafilas() {
         return parafilas;
     }
 
