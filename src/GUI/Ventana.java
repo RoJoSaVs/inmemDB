@@ -187,7 +187,7 @@ public class Ventana extends JFrame {
                         JOptionPane.showMessageDialog(agregar_c, "Favor agregar una columna");
                     }
                     else {
-                        Esquema E = new Esquema();// NO SE ESTA MOSTRANDO EL ESQUEMA, SINO QUE SE ESTA CREANDO UNO NUEVO
+                        //Esquema E = new Esquema();// NO SE ESTA MOSTRANDO EL ESQUEMA, SINO QUE SE ESTA CREANDO UNO NUEVO
                         E.Esquema2(paracolumnas, parafilas, esquema_titulo, contador);
                         E.g_paracolumnas = paracolumnas;
                         E.g_parafilas = E.todasfilas;
@@ -208,7 +208,7 @@ public class Ventana extends JFrame {
         regresar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 System.out.println("PRESIONADO");
-                System.out.println(esquema_titulo);
+                System.out.println(Contenedor_de_esquemas.getLista_de_esquemas().get(0).g_titulo);
                 Entrar E = new Entrar();
                 E.Entrar();
                 dispose();

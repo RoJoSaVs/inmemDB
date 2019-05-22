@@ -102,6 +102,7 @@ public class Entrar extends JFrame{
                     if(i.g_titulo.equals(seleccionado)){
                         i.Esquema2(i.g_paracolumnas,i.g_parafilas,i.g_titulo,i.g_conteo);
                         System.out.println(i.g_parafilas);
+                        System.out.println(i.toString());
                         break;
                     }
                 }

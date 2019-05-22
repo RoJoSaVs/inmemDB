@@ -2,13 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6735f950-0274-44ae-b3d7-40e61ac582ac" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/inmemDB/GUI/Esquema$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/inmemDB/GUI/Esquema$6.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/Esquema.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Esquema.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data.json" beforeDir="false" afterPath="$PROJECT_DIR$/Data.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/inmemDB/GUI/Esquema$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/inmemDB/GUI/Esquema$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/inmemDB/GUI/Esquema$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/inmemDB/GUI/Esquema$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/inmemDB/GUI/Esquema.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/inmemDB/GUI/Esquema.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/inmemDB/GUI/Ventana.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/inmemDB/GUI/Ventana.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/inmemDB/server/Client.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/inmemDB/server/Client.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/inmemDB/server/JsonCreator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/inmemDB/server/JsonCreator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/inmemDB/server/JsonToSend.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/inmemDB/server/JsonToSend.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/Entrar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Entrar.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GUI/Ventana.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Ventana.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/JsonCreator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/JsonCreator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/JsonToSend.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/JsonToSend.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/Server.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -28,8 +31,11 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/GUI/Entrar.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="2" column="22" selection-start-line="2" selection-start-column="14" selection-end-line="2" selection-end-column="22" />
+            <state relative-caret-position="189">
+              <caret line="99" column="70" selection-start-line="99" selection-start-column="55" selection-end-line="99" selection-end-column="70" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -38,7 +44,7 @@
         <entry file="file://$PROJECT_DIR$/src/server/JsonCreator.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="196">
-              <caret line="42" column="44" lean-forward="true" selection-start-line="42" selection-start-column="44" selection-end-line="42" selection-end-column="44" />
+              <caret line="42" column="44" selection-start-line="42" selection-start-column="44" selection-end-line="42" selection-end-column="44" />
             </state>
           </provider>
         </entry>
@@ -46,17 +52,26 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/GUI/Esquema.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="57" column="42" lean-forward="true" selection-start-line="57" selection-start-column="42" selection-end-line="57" selection-end-column="42" />
+            <state relative-caret-position="129">
+              <caret line="317" column="42" selection-start-line="317" selection-start-column="42" selection-end-line="317" selection-end-column="42" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/GUI/Contenedor_de_esquemas.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="270">
+              <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/server/JsonToSend.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="27" column="16" selection-start-line="27" selection-start-column="16" selection-end-line="27" selection-end-column="16" />
+            <state relative-caret-position="225">
+              <caret line="20" column="23" selection-start-line="20" selection-start-column="23" selection-end-line="20" selection-end-column="23" />
             </state>
           </provider>
         </entry>
@@ -64,8 +79,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/server/Client.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1510">
-              <caret line="103" column="1" selection-start-line="103" selection-start-column="1" selection-end-line="103" selection-end-column="1" />
+            <state relative-caret-position="435">
+              <caret line="66" lean-forward="true" selection-start-line="66" selection-end-line="66" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -76,8 +91,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/GUI/Ventana.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="33" column="49" selection-start-line="33" selection-start-column="40" selection-end-line="33" selection-end-column="49" />
+            <state relative-caret-position="234">
+              <caret line="210" column="93" lean-forward="true" selection-start-line="210" selection-start-column="93" selection-end-line="210" selection-end-column="93" />
             </state>
           </provider>
         </entry>
@@ -126,10 +141,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>b3</find>
-      <find>node</find>
-      <find>addRe</find>
-      <find>b2</find>
       <find>par</find>
       <find>buscar</find>
       <find>b5</find>
@@ -156,6 +167,10 @@
       <find>esquema</find>
       <find>jsontose</find>
       <find>parafilas</find>
+      <find>regre</find>
+      <find>g_ti</find>
+      <find>regres</find>
+      <find>lista</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -192,19 +207,19 @@
         <option value="$PROJECT_DIR$/src/GUI/r.java" />
         <option value="$PROJECT_DIR$/src/Logic/verifcar_elementos_repetidos_en_lista.java" />
         <option value="$PROJECT_DIR$/src/GUI/Esquema.java" />
-        <option value="$PROJECT_DIR$/src/server/Client.java" />
-        <option value="$PROJECT_DIR$/src/GUI/Entrar.java" />
         <option value="$PROJECT_DIR$/src/GUI/Main.java" />
         <option value="$PROJECT_DIR$/src/server/Server.java" />
-        <option value="$PROJECT_DIR$/src/GUI/Ventana.java" />
         <option value="$PROJECT_DIR$/src/server/JsonCreator.java" />
         <option value="$PROJECT_DIR$/src/server/JsonToSend.java" />
+        <option value="$PROJECT_DIR$/src/server/Client.java" />
+        <option value="$PROJECT_DIR$/src/GUI/Entrar.java" />
+        <option value="$PROJECT_DIR$/src/GUI/Ventana.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="y" value="27" />
-    <option name="width" value="1366" />
+    <option name="width" value="683" />
     <option name="height" value="741" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -343,7 +358,7 @@
       <updated>1557008465176</updated>
       <workItem from="1557899037567" duration="1427000" />
       <workItem from="1558459581722" duration="742000" />
-      <workItem from="1558488835733" duration="1835000" />
+      <workItem from="1558488835733" duration="4395000" />
     </task>
     <task id="LOCAL-00001" summary="Last server implementation running">
       <created>1558460291856</created>
@@ -352,11 +367,32 @@
       <option name="project" value="LOCAL" />
       <updated>1558460291857</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="bugs fixed">
+      <created>1558490770071</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1558490770071</updated>
+    </task>
+    <task id="LOCAL-00003" summary="bugs fixed">
+      <created>1558490824137</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1558490824137</updated>
+    </task>
+    <task id="LOCAL-00004" summary="bugs fixed">
+      <created>1558490902168</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1558490902170</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="7748000" />
+    <option name="totallyTimeSpent" value="10308000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="27" width="1366" height="741" extended-state="6" />
@@ -368,10 +404,10 @@
       <window_info id="UI Designer" order="3" />
       <window_info id="Capture Tool" order="4" />
       <window_info id="Favorites" order="5" sideWeight="0.5022124" side_tool="true" weight="0.31655845" />
-      <window_info active="true" content_ui="combo" id="Project" order="6" sideWeight="0.49778762" visible="true" weight="0.26626325" />
+      <window_info active="true" content_ui="combo" id="Project" order="6" sideWeight="0.49778762" visible="true" weight="0.22390318" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32512316" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.23809524" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -379,7 +415,7 @@
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="9" />
-      <window_info anchor="bottom" id="Messages" order="10" weight="0.32719547" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.32676518" />
       <window_info anchor="bottom" id="Docker" order="11" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="12" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -427,7 +463,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Some changes" />
     <MESSAGE value="Last server implementation running" />
-    <option name="LAST_COMMIT_MESSAGE" value="Last server implementation running" />
+    <MESSAGE value="bugs fixed" />
+    <option name="LAST_COMMIT_MESSAGE" value="bugs fixed" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/Logic/Main.java" />
@@ -453,13 +490,6 @@
     <entry file="file://$PROJECT_DIR$/src/GUI/Valores.java" />
     <entry file="file://$PROJECT_DIR$/src/GUI/r.java" />
     <entry file="file://$PROJECT_DIR$/src/Logic/verifcar_elementos_repetidos_en_lista.java" />
-    <entry file="file://$PROJECT_DIR$/src/GUI/Contenedor_de_esquemas.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="137">
-          <caret line="12" selection-start-line="11" selection-end-line="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/GUI/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="211">
@@ -489,31 +519,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/GUI/Entrar.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="22" selection-start-line="2" selection-start-column="14" selection-end-line="2" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/GUI/Ventana.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="33" column="49" selection-start-line="33" selection-start-column="40" selection-end-line="33" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/GUI/Esquema.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="57" column="42" lean-forward="true" selection-start-line="57" selection-start-column="42" selection-end-line="57" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/server/Client.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1510">
-          <caret line="103" column="1" selection-start-line="103" selection-start-column="1" selection-end-line="103" selection-end-column="1" />
+        <state relative-caret-position="435">
+          <caret line="66" lean-forward="true" selection-start-line="66" selection-end-line="66" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -523,14 +532,45 @@
     <entry file="file://$PROJECT_DIR$/src/server/JsonCreator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="196">
-          <caret line="42" column="44" lean-forward="true" selection-start-line="42" selection-start-column="44" selection-end-line="42" selection-end-column="44" />
+          <caret line="42" column="44" selection-start-line="42" selection-start-column="44" selection-end-line="42" selection-end-column="44" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/server/JsonToSend.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="27" column="16" selection-start-line="27" selection-start-column="16" selection-end-line="27" selection-end-column="16" />
+        <state relative-caret-position="225">
+          <caret line="20" column="23" selection-start-line="20" selection-start-column="23" selection-end-line="20" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GUI/Entrar.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="99" column="70" selection-start-line="99" selection-start-column="55" selection-end-line="99" selection-end-column="70" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GUI/Ventana.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="210" column="93" lean-forward="true" selection-start-line="210" selection-start-column="93" selection-end-line="210" selection-end-column="93" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GUI/Esquema.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="129">
+          <caret line="317" column="42" selection-start-line="317" selection-start-column="42" selection-end-line="317" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GUI/Contenedor_de_esquemas.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
         </state>
       </provider>
     </entry>
