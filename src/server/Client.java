@@ -40,14 +40,14 @@ public class Client {
         socket = server.accept();
         ArrayList<Esquema> nueva_memoria = new ArrayList<>();
 
-        while (running){
+       // while (running){
             DataInputStream incomming = new DataInputStream(socket.getInputStream());
             String message;
             message = incomming.readUTF();
 
         if (message == "ended"){
                 running = false;
-                break;
+                //break;
             } else {
                 System.out.println("Recibi el mensaje");
 
@@ -59,6 +59,12 @@ public class Client {
                 nuevoEsquema.g_conteo = data.getG_conteo();
                 nuevoEsquema.g_titulo = data.getG_titulo();
                 nuevoEsquema.tipos = data.getTipos();
+                for(Esquema i: Contenedor_de_esquemas.getLista_de_esquemas()){
+                    if(i.g_titulo.equals(nuevoEsquema.g_titulo)){
+                        Contenedor_de_esquemas.getLista_de_esquemas().remove(i);
+                        break;
+                    }
+                }
                 Contenedor_de_esquemas.getLista_de_esquemas().add(nuevoEsquema);
                 //Contenedor_de_esquemas.setLista_de_esquemas(nueva_memoria);
                 System.out.println("El cliente recibio el mensaje y seteo lo debido");
@@ -68,7 +74,7 @@ public class Client {
 
         }
 
-        }
+        //}
         socket.close();
 
     }
