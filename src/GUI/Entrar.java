@@ -78,7 +78,7 @@ public class Entrar extends JFrame{
                         Main.getClient().SendMessage(Server.getServerIp(), Server.getPortClientSend(), json);
                         System.out.println(json);
                     }
-                    Main.getClient().SendMessage(Server.getServerIp(), Server.getPortClientSend(), "ended");
+                    //Main.getClient().SendMessage(Server.getServerIp(), Server.getPortClientSend(), "ended");
 
                 } catch (IOException ex) {
                     ex.printStackTrace();

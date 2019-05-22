@@ -1,8 +1,8 @@
 {
-  "g_paracolumnas" : null,
-  "parafilas" : null,
-  "g_titulo" : null,
-  "tipos" : [ ],
-  "g_conteo" : 0,
-  "g_parafilas" : null
+  "g_paracolumnas" : [ "Agregar" ],
+  "parafilas" : [ ],
+  "g_titulo" : "Tomas",
+  "tipos" : [ "string" ],
+  "g_conteo" : 1,
+  "g_parafilas" : [ ]
 }

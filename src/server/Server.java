@@ -19,7 +19,7 @@ public class Server {
 
 
     private boolean enviar = true;
-    private static String serverIp = "192.168.100.8 ";
+    private static String serverIp = "192.168.100.8";
     private static int portClientSend = 8000;
     private static int getPortClientHear = 8081;
 
@@ -41,8 +41,6 @@ public class Server {
      */
     private void run() throws IOException{
         ServerSocket serverSocket = new ServerSocket(8000);
-        ports.add(8081);
-        ports.add(8082);
         while (true) {
             listen(serverSocket);
         }

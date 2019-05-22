@@ -39,14 +39,14 @@ public class Client {
         Socket socket;
         socket = server.accept();
 
-        while (running){
+        //while (running){
             DataInputStream incomming = new DataInputStream(socket.getInputStream());
 
             String message;
             message = incomming.readUTF();
             if (message == "ended"){
                 running = false;
-                break;
+                //break;
             } else {
                 System.out.println("Recibi el mensaje");
                 socket.close();
@@ -55,7 +55,7 @@ public class Client {
                 ArrayList<Esquema> nueva_memoria = new ArrayList<>();
                 JsonToSend data = jsonCreator.unSerializer(message);
                 Esquema nuevoEsquema = new Esquema();
-                nuevoEsquema.ftotal = data.getG_parafilas();
+                nuevoEsquema.filas = data.getG_parafilas();
                 nuevoEsquema.g_paracolumnas = data.getG_paracolumnas();
                 nuevoEsquema.g_conteo = data.getG_conteo();
                 nuevoEsquema.g_titulo = data.getG_titulo();
@@ -65,7 +65,7 @@ public class Client {
                 System.out.println("El cliente recibio el mensaje y seteo lo debido");
             }
 
-        }
+        //}
 
     }
 

@@ -40,7 +40,7 @@ public class JsonCreator <T>{
             JsonToSend jsonToSend = new JsonToSend();
             jsonToSend.setG_conteo(i.g_conteo);
             jsonToSend.setG_paracolumnas(i.g_paracolumnas);
-            jsonToSend.setG_parafilas(i.ftotal);
+            jsonToSend.setG_parafilas(i.filas);
             jsonToSend.setG_titulo(i.g_titulo);
             jsonToSend.setTipos(i.tipos);
             esquemasSeparados.add(jsonToSend);
@@ -57,7 +57,6 @@ public class JsonCreator <T>{
      */
     public JsonToSend unSerializer(String json) throws IOException {
         JsonToSend data = mapper.readValue(json, JsonToSend.class);
-        System.out.println("deserialice bien y la prueba es" + data.getG_parafilas());
         return data;
     }
 
