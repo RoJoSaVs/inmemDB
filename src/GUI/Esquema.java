@@ -314,19 +314,19 @@ public class Esquema extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 long inicial=System.nanoTime();
-                try {
-                    JsonCreator jsonCreator = new JsonCreator();
-                    ArrayList<JsonToSend> listaDeEsquemas = jsonCreator.separadorDeEsquemas(Contenedor_de_esquemas.getLista_de_esquemas());
-                    for (JsonToSend i: listaDeEsquemas){
-                        String json = jsonCreator.serializer(i);
-                        Main.getClient().SendMessage(Server.getServerIp(), Server.getPortClientSend(), json);
-                        System.out.println(json);
-                    }
-                    Main.getClient().SendMessage(Server.getServerIp(), Server.getPortClientSend(), "ended");
-
-                } catch (IOException ex) {
-                    ex.printStackTrace();
-                }
+//                try {
+//                    JsonCreator jsonCreator = new JsonCreator();
+//                    ArrayList<JsonToSend> listaDeEsquemas = jsonCreator.separadorDeEsquemas(Contenedor_de_esquemas.getLista_de_esquemas());
+//                    for (JsonToSend i: listaDeEsquemas){
+//                        String json = jsonCreator.serializer(i);
+//                        Main.getClient().SendMessage(Server.getServerIp(), Server.getPortClientSend(), json);
+//                        System.out.println(json);
+//                    }
+//                    Main.getClient().SendMessage(Server.getServerIp(), Server.getPortClientSend(), "ended");
+//
+//                } catch (IOException ex) {
+//                    ex.printStackTrace();
+//                }
                 String por_buscar =texto_busqueda.getText();
                 int numero_de_columna=crear_indice.getSelectedIndex();
                 Object[] busqueda_sobre_esta_columna=Lista_de_columnas.get(numero_de_columna);
