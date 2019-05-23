@@ -5,6 +5,7 @@ import Logic.AA.AA_container;
 import Logic.AVL.AVLTree;
 import Logic.B_Tree.B_tree;
 import Logic.BinaryTree.BinaryTree;
+import Logic.Join.JoinData;
 import Logic.List.LinkedList;
 import Logic.RedBlack.RedBlackTree;
 import Logic.Splay.SplayTree;
@@ -82,6 +83,8 @@ public class Esquema extends JFrame {
         JButton b5 = new JButton("BUSCAR");//////////////////////
         JButton b6 = new JButton("CREAR INDICE");//////////////////
         JButton b7 = new JButton("BORRAR");//////////////////
+        JButton b8 = new JButton("JOIN");//////////////////
+
 
         texto1.setBounds(150,220,100,25);
         texto1.setBackground(Color.decode("#3B006A"));
@@ -118,6 +121,10 @@ public class Esquema extends JFrame {
         b7.setBounds(270,280,100,25);//////////////////
         b7.setBackground(Color.decode("#3B006A"));///////////////////
         b7.setForeground(Color.decode("#B76EF1"));
+
+        b8.setBounds(750,220,100,25);//////////////////
+        b8.setBackground(Color.decode("#3B006A"));///////////////////
+        b8.setForeground(Color.decode("#B76EF1"));
 
         escoger_estructuras.setBounds(520,280,100,25);;//(400,280,100,25);//////////////////
         escoger_estructuras.setBackground(Color.decode("#3B006A"));///////////////////
@@ -582,6 +589,22 @@ public class Esquema extends JFrame {
             }
         });
 
+        b8.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int columna=crear_indice.getSelectedIndex();
+                if(Contenedor_join.join==null){
+                    Contenedor_join.join=columna;
+                }
+                else{
+                    JoinData join = new JoinData();
+                    join.setJoin(columna,Contenedor_join.join );
+                }
+
+
+            }
+        });
+
 
 
         JScrollPane pane = new JScrollPane(esquema);
@@ -600,6 +623,7 @@ public class Esquema extends JFrame {
         frame.add(b5);
         frame.add(b6);
         frame.add(b7);
+        frame.add(b8);
         frame.add(escoger_estructuras);
 
 
