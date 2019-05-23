@@ -8,6 +8,9 @@ public class JoinData<J> {
     public void setJoin(J right, J left){
         this.setLeft(left);
         this.setRight(right);
+        System.out.println("Join creado");
+        System.out.println(this.right);
+        System.out.println(this.left);
     }
 
     private void setRight(J right){
