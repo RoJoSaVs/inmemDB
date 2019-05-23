@@ -389,15 +389,16 @@ public class Esquema extends JFrame {
                             }
                         }
                         if (i instanceof BinaryTree){
-                            Integer resultado = (Integer) ((BinaryTree) i).containsNode(por_buscar, 0).value;
-                            if(resultado!=null) {
-                                UIManager.put("OptionPane.messageForeground", Color.decode("#B76EF1"));
-                                UIManager.put("OptionPane.background", Color.decode("#060734"));
-                                UIManager.put("OptionPane.messagebackground", Color.decode("#060734"));
-                                UIManager.put("Panel.background", Color.decode("#060734"));
-                                JOptionPane.showMessageDialog(null, lista_de_filas.get(resultado).toString()+"\nEl tiempo de búsqueda fue:"+(System.nanoTime()-inicial)+"nS","Arbol Binario", JOptionPane.INFORMATION_MESSAGE);
+                            try {
+                                Integer resultado = (Integer) ((BinaryTree) i).containsNode(por_buscar).value;
+                                    UIManager.put("OptionPane.messageForeground", Color.decode("#B76EF1"));
+                                    UIManager.put("OptionPane.background", Color.decode("#060734"));
+                                    UIManager.put("OptionPane.messagebackground", Color.decode("#060734"));
+                                    UIManager.put("Panel.background", Color.decode("#060734"));
+                                    JOptionPane.showMessageDialog(null, lista_de_filas.get(resultado).toString() + "\nEl tiempo de búsqueda fue:" + (System.nanoTime() - inicial) + "nS", "Arbol Binario", JOptionPane.INFORMATION_MESSAGE);
+
                             }
-                            else{
+                            catch (Exception E){
                                 UIManager.put("OptionPane.messageForeground", Color.decode("#B76EF1"));
                                 UIManager.put("OptionPane.background", Color.decode("#060734"));
                                 UIManager.put("OptionPane.messagebackground", Color.decode("#060734"));

@@ -9,7 +9,8 @@ public class BinaryTree <T extends  Comparable<T>,V>{
 
     private Node<T,V> addRecursive(Node<T,V> current, T key, V value) {
         if (current == null) {
-            return new Node<>(key, value);
+            root=new Node<>(key, value);
+            return root;
         }
         if (current.key.compareTo(key) < 0) {//(value < current.value)
             current.left = addRecursive(current.left, key, value);
@@ -19,11 +20,11 @@ public class BinaryTree <T extends  Comparable<T>,V>{
         return current;
     }
 
-    public Node containsNode(T key, V value) {
-        return containsNodeRecursive(root,key, value);
+    public Node containsNode(T key) {
+        return containsNodeRecursive(root,key);
     }
 
-    private Node containsNodeRecursive(Node<T,V> current, T key,V value) {
+    private Node containsNodeRecursive(Node<T,V> current, T key) {
         if (current == null) {
             System.out.println(false);
             return null;
@@ -35,8 +36,8 @@ public class BinaryTree <T extends  Comparable<T>,V>{
             return current;
         }
         return current.key.compareTo(key) < 0
-                ? containsNodeRecursive(current.left,key,value)
-                : containsNodeRecursive(current.right,key,value);
+                ? containsNodeRecursive(current.left,key)
+                : containsNodeRecursive(current.right,key);
     }
 
     public void delete(T key, Object value) {

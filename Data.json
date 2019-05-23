@@ -1,8 +1,8 @@
 {
-  "g_paracolumnas" : [ "Agregar" ],
-  "parafilas" : [ ],
-  "g_titulo" : "Ingresar",
-  "tipos" : [ "string" ],
-  "g_conteo" : 1,
-  "g_parafilas" : [ ]
+  "g_paracolumnas" : [ "gfd", "fsd" ],
+  "parafilas" : [ "gdsfg", "gdsfggs", " ", "dhg", "srdgf", " " ],
+  "g_titulo" : "dsfa",
+  "tipos" : [ "string", "string" ],
+  "g_conteo" : 2,
+  "g_parafilas" : [ "gdsfg", "gdsfggs", " ", "dhg", "srdgf", " " ]
 }
